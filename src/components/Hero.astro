@@ -8,22 +8,19 @@ const en = portfolioContent['en'];
 <section id="hero" class="py-12 sm:py-20 border-b border-slate-200 dark:border-slate-800">
   <div class="space-y-6">
     <!-- Internship Availability Badge -->
-    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700/80 text-emerald-800 dark:text-emerald-300 text-xs font-mono font-semibold shadow-sm">
-      <span class="relative flex h-2 w-2" aria-hidden="true">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-      </span>
+    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700/80 text-emerald-800 dark:text-emerald-300 text-xs font-mono font-semibold shadow-xs">
+      <span class="inline-flex rounded-full h-2 w-2 bg-emerald-500" aria-hidden="true"></span>
       <span class="lang-pt">{pt.hero.statusBadge}</span>
       <span class="lang-en">{en.hero.statusBadge}</span>
     </div>
 
     <!-- Name and Terminal Motif -->
     <div>
-      <p class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-2">
+      <p class="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 mb-2">
         <span class="lang-pt">{pt.hero.greeting}</span>
         <span class="lang-en">{en.hero.greeting}</span>
       </p>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white font-display">
         {pt.meta.name}
       </h1>
     </div>
@@ -41,10 +38,10 @@ const en = portfolioContent['en'];
     </div>
 
     <!-- CTAs and Direct Links -->
-    <div class="pt-2 flex flex-wrap items-center gap-4">
+    <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
       <a
         href={pt.hero.ctaPrimary.href}
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 text-white dark:bg-sky-500 dark:text-slate-950 font-semibold text-sm hover:bg-slate-800 dark:hover:bg-sky-400 shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 text-white dark:bg-amber-500 dark:text-amber-950 font-semibold text-sm hover:bg-slate-800 dark:hover:bg-amber-400 shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
       >
         <span class="lang-pt">{pt.hero.ctaPrimary.label}</span>
         <span class="lang-en">{en.hero.ctaPrimary.label}</span>
@@ -53,16 +50,31 @@ const en = portfolioContent['en'];
         </svg>
       </a>
 
+      <!-- Resume PDF Button (High-value Recruiter Action) -->
+      <a
+        href={pt.meta.resumeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm"
+        aria-label="Curriculum Vitae / Resume (PDF)"
+      >
+        <svg class="w-4 h-4 text-amber-700 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        <span class="lang-pt">Currículo (PDF)</span>
+        <span class="lang-en">Resume (PDF)</span>
+      </a>
+
       <a
         href={pt.hero.ctaSecondary.href}
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-transparent text-slate-600 dark:text-slate-400 font-semibold text-sm hover:text-slate-900 dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
       >
         <span class="lang-pt">{pt.hero.ctaSecondary.label}</span>
         <span class="lang-en">{en.hero.ctaSecondary.label}</span>
       </a>
 
       <!-- Quick Social / Direct Icons -->
-      <div class="flex items-center gap-3 pl-2 sm:border-l sm:border-slate-300 sm:dark:border-slate-700">
+      <div class="flex items-center gap-2 pl-2 sm:border-l sm:border-slate-300 sm:dark:border-slate-700">
         <!-- GitHub -->
         <a
           href={pt.meta.github}
@@ -100,20 +112,6 @@ const en = portfolioContent['en'];
         >
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-          </svg>
-        </a>
-
-        <!-- Resume PDF -->
-        <a
-          href={pt.meta.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="p-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-          aria-label="Curriculum Vitae / Resume (PDF)"
-          title="Currículo / Resume"
-        >
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
           </svg>
         </a>
       </div>

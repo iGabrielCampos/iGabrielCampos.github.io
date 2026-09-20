@@ -7,24 +7,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Modern technical neutral palette
+        // Paleta 3: Editorial Ink & Terracotta
         surface: {
-          light: '#f8fafc',
-          DEFAULT: '#0f172a',
-          dark: '#030712',
+          light: '#fbfbfa',
+          DEFAULT: '#1c1c1a',
+          dark: '#141413',
           card: {
             light: '#ffffff',
-            dark: '#111827',
+            dark: '#1c1c1a',
           },
           border: {
-            light: '#e2e8f0',
-            dark: '#1f2937',
+            light: '#e5e5dc',
+            dark: '#2c2c28',
           },
         },
         accent: {
-          light: '#0284c7', // Sky-600
-          DEFAULT: '#38bdf8', // Sky-400
-          dark: '#0ea5e9', // Sky-500
+          light: '#c2410c', // Terracota queimado
+          DEFAULT: '#fb923c', // Ocre/tangerina técnica
+          dark: '#fb923c',
         },
         // Strict project status badge palette
         status: {
@@ -87,13 +87,16 @@ export default {
         },
       },
       fontFamily: {
-        sans: [
+        display: [
+          '"Bricolage Grotesque"',
+          'system-ui',
           '-apple-system',
-          'BlinkMacSystemFont',
-          '"Segoe UI"',
-          'Roboto',
-          '"Helvetica Neue"',
-          'Arial',
+          'sans-serif',
+        ],
+        sans: [
+          '"IBM Plex Sans"',
+          'system-ui',
+          '-apple-system',
           'sans-serif',
         ],
         mono: [
@@ -103,8 +106,6 @@ export default {
           'Menlo',
           'Monaco',
           'Consolas',
-          '"Liberation Mono"',
-          '"Courier New"',
           'monospace',
         ],
       },

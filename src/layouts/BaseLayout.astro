@@ -82,7 +82,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
   </head>
   <body class="bg-surface-light dark:bg-surface-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
     <!-- Accessible Skip to Content Link -->
-    <a href="#main-content" class="skip-to-content focus:outline-none focus:ring-2 focus:ring-sky-500">
+    <a href="#main-content" class="skip-to-content focus:outline-none focus:ring-2 focus:ring-amber-500">
       <span class="lang-pt">Pular para o conteúdo principal</span>
       <span class="lang-en">Skip to main content</span>
     </a>
@@ -93,10 +93,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
         <!-- Site Logo / Branding -->
         <a
           href="/"
-          class="flex items-center gap-2 text-slate-900 dark:text-white font-mono font-bold text-sm tracking-tight hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+          class="flex items-center gap-2 text-slate-900 dark:text-white font-mono font-bold text-sm tracking-tight hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
           aria-label="Portfolio Home"
         >
-          <span class="text-sky-600 dark:text-sky-400 font-extrabold">&gt;</span>
+          <span class="text-amber-700 dark:text-amber-400 font-extrabold">&gt;</span>
           <span>campos<span class="text-slate-400 dark:text-slate-500 font-normal">.dev</span></span>
         </a>
 
@@ -130,27 +130,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
 
         <!-- Right Controls: Language & Theme Toggle -->
         <div class="flex items-center gap-2">
-          <!-- Language Selector Button -->
+          <!-- Language Selector Button (Segmented Pill) -->
           <button
             id="lang-toggle"
             type="button"
-            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono font-semibold border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
-            aria-label="Alternar idioma / Toggle language"
+            class="inline-flex items-center p-1 rounded-md text-xs font-mono font-medium border border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-900/60 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
+            aria-label="Alternar idioma (Ativo: Português)"
             title="Alternar idioma / Toggle language"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-            <span class="current-lang-text">PT-BR</span>
+            <span class="lang-pill-pt px-2 py-1 rounded font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs">PT</span>
+            <span class="lang-pill-en px-2 py-1 rounded text-slate-400 dark:text-slate-500">EN</span>
           </button>
 
           <!-- Theme Toggle Button -->
           <button
             id="theme-toggle"
             type="button"
-            class="p-2 rounded-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+            class="p-2 rounded-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
             aria-label="Alternar tema claro/escuro / Toggle light/dark theme"
             title="Alternar tema / Toggle theme"
           >
@@ -176,7 +172,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
           <button
             id="mobile-menu-btn"
             type="button"
-            class="md:hidden p-2 rounded-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+            class="md:hidden p-2 rounded-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
             aria-expanded="false"
             aria-controls="mobile-menu"
             aria-label="Abrir menu de navegação / Open navigation menu"
@@ -272,17 +268,43 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
         }
 
         // Lang sync function
-        function updateLangText(lang: string) {
-          const langTexts = document.querySelectorAll('.current-lang-text');
-          langTexts.forEach((el) => {
-            el.textContent = lang === 'pt-BR' ? 'PT-BR' : 'EN';
+        function updateLangPills(lang: string) {
+          const isPt = lang === 'pt-BR';
+          const ptPills = document.querySelectorAll('.lang-pill-pt');
+          const enPills = document.querySelectorAll('.lang-pill-en');
+
+          ptPills.forEach((el) => {
+            el.className = isPt
+              ? 'lang-pill-pt px-2 py-1 rounded font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs transition-all'
+              : 'lang-pill-pt px-2 py-1 rounded text-slate-400 dark:text-slate-500 transition-all';
           });
+          enPills.forEach((el) => {
+            el.className = !isPt
+              ? 'lang-pill-en px-2 py-1 rounded font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs transition-all'
+              : 'lang-pill-en px-2 py-1 rounded text-slate-400 dark:text-slate-500 transition-all';
+          });
+
+          if (langBtn) {
+            langBtn.setAttribute('aria-label', isPt ? 'Mudar idioma para Inglês' : 'Switch language to Portuguese');
+          }
+
+          document.title = isPt
+            ? 'Gabriel Campos | Portfólio & Diário de Engenharia'
+            : 'Gabriel Campos | Portfolio & Engineering Journal';
         }
 
         // Initial UI sync
         const isDark = document.documentElement.classList.contains('dark');
         updateThemeIcons(isDark);
-        updateLangText(document.documentElement.lang || 'pt-BR');
+        updateLangPills(document.documentElement.lang || 'pt-BR');
+
+        // Real-time OS theme change listener
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (!localStorage.getItem('portfolio_theme')) {
+            document.documentElement.classList.toggle('dark', e.matches);
+            updateThemeIcons(e.matches);
+          }
+        });
 
         // Theme Toggle Event
         if (themeBtn) {
@@ -301,7 +323,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
             document.documentElement.lang = nextLang;
             document.documentElement.setAttribute('data-lang', nextLang);
             localStorage.setItem('portfolio_lang', nextLang);
-            updateLangText(nextLang);
+            updateLangPills(nextLang);
           });
         }
 

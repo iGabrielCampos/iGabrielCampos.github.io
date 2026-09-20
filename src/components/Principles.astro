@@ -8,16 +8,13 @@ const en = portfolioContent['en'].principles;
 <section id="principles" class="py-12 sm:py-16 border-b border-slate-200 dark:border-slate-800">
   <div class="space-y-3 mb-8">
     <div class="flex items-center gap-2">
-      <span class="text-xs font-mono font-semibold uppercase tracking-widest text-sky-600 dark:text-sky-400">
-        02.
-      </span>
-      <h2 class="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-sky-400">
+      <h2 class="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400">
         <span class="lang-pt">{pt.sectionTag}</span>
         <span class="lang-en">{en.sectionTag}</span>
       </h2>
     </div>
 
-    <h3 class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-slate-900 dark:text-white">
+    <h3 class="text-2xl sm:text-3xl font-bold font-display tracking-tight text-slate-900 dark:text-white">
       <span class="lang-pt">{pt.sectionTitle}</span>
       <span class="lang-en">{en.sectionTitle}</span>
     </h3>
@@ -28,23 +25,17 @@ const en = portfolioContent['en'].principles;
     </p>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 pt-2">
     {pt.items.map((item, index) => {
       const enItem = en.items[index] || item;
       return (
-        <div class="p-5 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-slate-300 dark:hover:border-slate-700 transition-colors shadow-sm">
-          <div class="flex items-center justify-between gap-4 mb-3">
-            <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-              {item.number}
-            </span>
-          </div>
-
-          <h4 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+        <div class="space-y-2 border-t border-slate-200 dark:border-slate-800 pt-4">
+          <h4 class="text-base sm:text-lg font-bold font-display text-slate-900 dark:text-white">
             <span class="lang-pt">{item.title}</span>
             <span class="lang-en">{enItem.title}</span>
           </h4>
 
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             <span class="lang-pt">{item.description}</span>
             <span class="lang-en">{enItem.description}</span>
           </p>
