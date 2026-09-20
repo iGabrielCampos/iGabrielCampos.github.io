@@ -153,8 +153,8 @@ const { ptProject, enProject } = Astro.props;
         </a>
       ) : (
         <span class="inline-flex items-center gap-1 text-stone-400 dark:text-stone-500 font-mono text-xs italic">
-          <span class="lang-pt">(Código local / Repo pendente)</span>
-          <span class="lang-en">(Local code / Repo pending)</span>
+          <span class="lang-pt">({ptProject.links.repoNote || 'Código local / Repo pendente'})</span>
+          <span class="lang-en">({enProject.links.repoNote || 'Local code / Repo pending'})</span>
         </span>
       )}
     </div>

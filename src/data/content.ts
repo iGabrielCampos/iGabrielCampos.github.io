@@ -23,6 +23,7 @@ export interface ProjectStatus {
 
 export interface ProjectLinksData {
   repo: string | null;
+  repoNote?: string;
   demo: string | null;
   docs: string | null;
   notes: string | null;
@@ -397,7 +398,8 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
           ],
           honestStatusNote: 'Concluído como exercício de estudo. Apresentado intencionalmente como exercício de fundamentos e raízes de programação, sem qualquer pretensão de ser considerado um projeto de produção.',
           links: {
-            repo: 'https://github.com/iGabrielCampos',
+            repo: null,
+            repoNote: 'Exercícios mantidos localmente, sem repositório dedicado',
             demo: null,
             docs: null,
             notes: null,
@@ -539,7 +541,7 @@ Investir tempo no DER antes da codificação evitou refatorações dolorosas. O 
         'Sou estudante de Análise e Desenvolvimento de Sistemas (ADS), residindo em João Pessoa, Paraíba. Minha trajetória na programação começou pelo caminho dos fundamentos: escolhi estudar a linguagem C para entender de perto como a memória funciona, como as estruturas de repetição afetam a execução e como o computador interpreta as instruções antes de me apoiar em abstrações mais altas.',
         'Com essa fundação consolidada, avancei para o ecossistema Python e Django, desenvolvendo o CineTrack — uma aplicação web funcional onde integrei banco de dados relacional, autenticação de usuários, renderização de templates e uma camada de API REST com Django REST Framework.',
         'Atualmente, dedico meus estudos à arquitetura de software no ecossistema TypeScript e Node.js, construindo APIs tipadas, modulares e seguras, além de aprofundar a modelagem de bancos de dados a partir de demandas concretas de negócios, como o sistema de reserva de estúdios de rádio.',
-        'Acredito firmemente no aprendizado contínuo, na simplicidade como virtude de engenharia e na transparência profissional. Estou em busca da minha primeira oportunidade de estágio em desenvolvimento de software (remoto ou presencial em João Pessoa), onde possa colaborar ativamente em sistemas reais, aprender com desenvolvedores seniores e agregar valor técnico com seriedade e dedicação.'
+        'Construo software com foco em simplicidade, fundamentos de computação e transparência total no processo. Ao documentar abertamente a transição da lógica algorítmica em C para arquiteturas web e APIs RESTful, busco aprender continuamente e aplicar boas práticas de engenharia. Estou em busca da minha primeira oportunidade de estágio em desenvolvimento de software (remoto ou presencial em João Pessoa), onde possa colaborar ativamente em sistemas reais, aprender com desenvolvedores seniores e agregar valor técnico com seriedade e dedicação.'
       ],
       quickFactsTitle: 'Resumo Rápido',
       quickFacts: [
@@ -786,7 +788,8 @@ Investir tempo no DER antes da codificação evitou refatorações dolorosas. O 
           ],
           honestStatusNote: 'Completed as a study exercise. Deliberately cataloged as foundational algorithmic practice and programming roots, without pretending to be a commercial or production product.',
           links: {
-            repo: 'https://github.com/iGabrielCampos',
+            repo: null,
+            repoNote: 'Exercises maintained locally, no dedicated repository',
             demo: null,
             docs: null,
             notes: null,
@@ -928,7 +931,7 @@ Investing in comprehensive conceptual modeling prior to writing application code
         'I am a Systems Analysis and Development (ADS) student based in João Pessoa, Paraíba, Brazil. My programming journey began with a conscious choice to study C fundamentals first — understanding how memory works, how execution flow impacts performance, and how computers process low-level instructions before leaning on higher-level abstractions.',
         'With that foundation established, I stepped into the Python and Django ecosystem, building CineTrack — a full-stack web application that combines relational databases, user authentication, server-side template rendering, and a dedicated REST API layer built with Django REST Framework.',
         'Today, I am focusing my studies on backend software architecture within the TypeScript and Node.js ecosystems, building typed, modular, and reliable APIs while deepening my relational database modeling skills through real-world stakeholder problems, such as the radio studio booking system.',
-        'I strongly believe in learning in public, valuing simplicity as an engineering virtue, and practicing radical transparency. I am actively seeking my first software development internship (remote or on-site in João Pessoa), where I can contribute diligently to production systems, learn from experienced senior engineers, and deliver reliable technical value.'
+        'I build software focused on simplicity, computer science fundamentals, and radical process transparency. By documenting this journey in public — from low-level algorithmic logic in C to web architectures and RESTful APIs —, I continuously reinforce solid engineering principles. I am actively seeking my first software development internship (remote or on-site in João Pessoa), where I can contribute diligently to production systems, learn from experienced senior engineers, and deliver reliable technical value.'
       ],
       quickFactsTitle: 'Quick Facts',
       quickFacts: [
@@ -1185,7 +1188,6 @@ export const projects: Project[] = [
       'Linux Terminal'
     ],
     links: {
-      repo: 'https://github.com/iGabrielCampos',
       hasLiveDemo: false,
       noDemoReason: {
         pt: 'Exercícios de terminal executados localmente; não se aplica deploy web.',
