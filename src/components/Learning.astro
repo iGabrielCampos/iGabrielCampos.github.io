@@ -5,78 +5,80 @@ const pt = portfolioContent['pt-BR'].learning;
 const en = portfolioContent['en'].learning;
 ---
 
-<section id="learning" class="py-12 sm:py-16 border-b border-slate-200 dark:border-slate-800">
-  <div class="space-y-3 mb-8">
-    <div class="flex items-center gap-2">
-      <h2 class="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400">
-        <span class="lang-pt">{pt.sectionTag}</span>
-        <span class="lang-en">{en.sectionTag}</span>
-      </h2>
+<section id="learning" class="py-12 sm:py-16 bg-[#fbfbfa] dark:bg-[#141413] border-b border-[#e5e5dc] dark:border-[#2c2c28]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-3 mb-8">
+      <div class="flex items-center gap-2">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400">
+          <span class="lang-pt">{pt.sectionTag}</span>
+          <span class="lang-en">{en.sectionTag}</span>
+        </h2>
+      </div>
+
+      <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-stone-900 dark:text-white">
+        <span class="lang-pt">{pt.sectionTitle}</span>
+        <span class="lang-en">{en.sectionTitle}</span>
+      </h3>
+
+      <p class="text-sm sm:text-base font-normal text-stone-600 dark:text-stone-400 max-w-prose leading-relaxed">
+        <span class="lang-pt">{pt.sectionSubtitle}</span>
+        <span class="lang-en">{en.sectionSubtitle}</span>
+      </p>
     </div>
 
-    <h3 class="text-2xl sm:text-3xl font-bold font-display tracking-tight text-slate-900 dark:text-white">
-      <span class="lang-pt">{pt.sectionTitle}</span>
-      <span class="lang-en">{en.sectionTitle}</span>
-    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+      {pt.items.map((ptItem, index) => {
+        const enItem = en.items[index] || ptItem;
+        return (
+          <div class="pt-6 border-t border-[#e5e5dc] dark:border-[#2c2c28] flex flex-col justify-between space-y-4">
+            <div>
+              <!-- Category and Status -->
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-mono font-medium uppercase tracking-wider text-amber-800 dark:text-amber-400">
+                  <span class="lang-pt">{ptItem.category}</span>
+                  <span class="lang-en">{enItem.category}</span>
+                </span>
+                <span class="text-xs font-mono font-medium text-stone-500 dark:text-stone-400">
+                  <span class="lang-pt">{ptItem.status}</span>
+                  <span class="lang-en">{enItem.status}</span>
+                </span>
+              </div>
 
-    <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
-      <span class="lang-pt">{pt.sectionSubtitle}</span>
-      <span class="lang-en">{en.sectionSubtitle}</span>
-    </p>
-  </div>
+              <!-- Topic Title -->
+              <h4 class="text-base font-semibold text-stone-900 dark:text-white mb-2">
+                <span class="lang-pt">{ptItem.topic}</span>
+                <span class="lang-en">{enItem.topic}</span>
+              </h4>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-    {pt.items.map((ptItem, index) => {
-      const enItem = en.items[index] || ptItem;
-      return (
-        <div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex flex-col justify-between shadow-sm">
-          <div>
-            <!-- Category and Status -->
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="text-xs font-mono font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400">
-                <span class="lang-pt">{ptItem.category}</span>
-                <span class="lang-en">{enItem.category}</span>
-              </span>
-              <span class="px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                <span class="lang-pt">{ptItem.status}</span>
-                <span class="lang-en">{enItem.status}</span>
-              </span>
+              <!-- Description -->
+              <p class="text-xs sm:text-sm font-normal text-stone-600 dark:text-stone-400 mb-4 leading-relaxed max-w-prose">
+                <span class="lang-pt">{ptItem.description}</span>
+                <span class="lang-en">{enItem.description}</span>
+              </p>
             </div>
 
-            <!-- Topic Title -->
-            <h4 class="text-base font-bold font-display text-slate-900 dark:text-white mb-2">
-              <span class="lang-pt">{ptItem.topic}</span>
-              <span class="lang-en">{enItem.topic}</span>
-            </h4>
-
-            <!-- Description -->
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-              <span class="lang-pt">{ptItem.description}</span>
-              <span class="lang-en">{enItem.description}</span>
-            </p>
+            <!-- Focus Areas -->
+            <div class="pt-3 border-t border-stone-100 dark:border-[#282824]">
+              <span class="text-xs font-mono font-medium uppercase tracking-wider text-stone-500 dark:text-stone-400 block mb-1.5">
+                <span class="lang-pt">Tópicos em Foco</span>
+                <span class="lang-en">Focus Areas</span>
+              </span>
+              <ul class="space-y-1 text-xs text-stone-700 dark:text-stone-300">
+                {ptItem.focusAreas.map((area, areaIdx) => {
+                  const enArea = enItem.focusAreas[areaIdx] || area;
+                  return (
+                    <li class="flex items-start gap-2">
+                      <span class="text-amber-600 dark:text-amber-500 font-mono font-bold select-none text-xs leading-relaxed" aria-hidden="true">•</span>
+                      <span class="lang-pt font-normal leading-relaxed">{area}</span>
+                      <span class="lang-en font-normal leading-relaxed">{enArea}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
-
-          <!-- Focus Areas -->
-          <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80">
-            <span class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1.5">
-              <span class="lang-pt">Tópicos em Foco</span>
-              <span class="lang-en">Focus Areas</span>
-            </span>
-            <ul class="space-y-1 text-xs text-slate-700 dark:text-slate-300">
-              {ptItem.focusAreas.map((area, areaIdx) => {
-                const enArea = enItem.focusAreas[areaIdx] || area;
-                return (
-                  <li class="flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-600 dark:bg-amber-500 flex-shrink-0"></span>
-                    <span class="lang-pt">{area}</span>
-                    <span class="lang-en">{enArea}</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-      );
-    })}
+        );
+      })}
+    </div>
   </div>
 </section>

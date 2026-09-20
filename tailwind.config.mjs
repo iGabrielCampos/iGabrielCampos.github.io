@@ -12,6 +12,10 @@ export default {
           light: '#fbfbfa',
           DEFAULT: '#1c1c1a',
           dark: '#141413',
+          subtle: {
+            light: '#f4f4ee',
+            dark: '#1a1a18',
+          },
           card: {
             light: '#ffffff',
             dark: '#1c1c1a',
@@ -88,13 +92,13 @@ export default {
       },
       fontFamily: {
         display: [
-          '"Bricolage Grotesque"',
+          '"Plus Jakarta Sans"',
           'system-ui',
           '-apple-system',
           'sans-serif',
         ],
         sans: [
-          '"IBM Plex Sans"',
+          '"Plus Jakarta Sans"',
           'system-ui',
           '-apple-system',
           'sans-serif',
@@ -108,6 +112,9 @@ export default {
           'Consolas',
           'monospace',
         ],
+      },
+      maxWidth: {
+        prose: '50ch',
       },
     },
   },

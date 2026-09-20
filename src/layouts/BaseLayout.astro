@@ -80,7 +80,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
       })();
     </script>
   </head>
-  <body class="bg-surface-light dark:bg-surface-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+  <body class="bg-surface-light dark:bg-surface-dark text-stone-900 dark:text-stone-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
     <!-- Accessible Skip to Content Link -->
     <a href="#main-content" class="skip-to-content focus:outline-none focus:ring-2 focus:ring-amber-500">
       <span class="lang-pt">Pular para o conteúdo principal</span>
@@ -88,41 +88,41 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
     </a>
 
     <!-- Sticky Header -->
-    <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-colors duration-200">
+    <header class="sticky top-0 z-40 w-full border-b border-[#e5e5dc] dark:border-[#2c2c28] bg-[#fbfbfa]/85 dark:bg-[#141413]/85 backdrop-blur-md transition-colors duration-200">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <!-- Site Logo / Branding -->
         <a
           href="/"
-          class="flex items-center gap-2 text-slate-900 dark:text-white font-mono font-bold text-sm tracking-tight hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+          class="flex items-center gap-2 text-stone-900 dark:text-white font-mono font-semibold text-sm tracking-tight hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
           aria-label="Portfolio Home"
         >
-          <span class="text-amber-700 dark:text-amber-400 font-extrabold">&gt;</span>
-          <span>campos<span class="text-slate-400 dark:text-slate-500 font-normal">.dev</span></span>
+          <span class="text-amber-700 dark:text-amber-400 font-bold">&gt;</span>
+          <span>campos<span class="text-stone-400 dark:text-stone-500 font-normal">.dev</span></span>
         </a>
 
         <!-- Desktop Navigation -->
-        <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
-          <a href="#principles" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+        <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600 dark:text-stone-300">
+          <a href="#principles" class="hover:text-stone-900 dark:hover:text-white transition-colors">
             <span class="lang-pt">Princípios</span>
             <span class="lang-en">Principles</span>
           </a>
-          <a href="#projects" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+          <a href="#projects" class="hover:text-stone-900 dark:hover:text-white transition-colors">
             <span class="lang-pt">Projetos</span>
             <span class="lang-en">Projects</span>
           </a>
-          <a href="#journal" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+          <a href="#journal" class="hover:text-stone-900 dark:hover:text-white transition-colors">
             <span class="lang-pt">Diário</span>
             <span class="lang-en">Journal</span>
           </a>
-          <a href="#learning" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+          <a href="#learning" class="hover:text-stone-900 dark:hover:text-white transition-colors">
             <span class="lang-pt">Estudos</span>
             <span class="lang-en">Learning</span>
           </a>
-          <a href="#about" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+          <a href="#about" class="hover:text-stone-900 dark:hover:text-white transition-colors">
             <span class="lang-pt">Sobre</span>
             <span class="lang-en">About</span>
           </a>
-          <a href="#contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+          <a href="#contact" class="hover:text-stone-900 dark:hover:text-white transition-colors">
             <span class="lang-pt">Contato</span>
             <span class="lang-en">Contact</span>
           </a>
@@ -130,23 +130,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
 
         <!-- Right Controls: Language & Theme Toggle -->
         <div class="flex items-center gap-2">
-          <!-- Language Selector Button (Segmented Pill) -->
+          <!-- Language Selector Button (Clean typographic PT / EN) -->
           <button
             id="lang-toggle"
             type="button"
-            class="inline-flex items-center p-1 rounded-md text-xs font-mono font-medium border border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-900/60 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
+            class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-mono font-medium border border-stone-200 dark:border-[#2c2c28] text-stone-700 dark:text-stone-300 hover:border-stone-300 dark:hover:border-stone-600 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
             aria-label="Alternar idioma (Ativo: Português)"
             title="Alternar idioma / Toggle language"
           >
-            <span class="lang-pill-pt px-2 py-1 rounded font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs">PT</span>
-            <span class="lang-pill-en px-2 py-1 rounded text-slate-400 dark:text-slate-500">EN</span>
+            <span class="lang-pill-pt font-bold text-stone-900 dark:text-white">PT</span>
+            <span class="text-stone-300 dark:text-stone-600 select-none">/</span>
+            <span class="lang-pill-en text-stone-400 dark:text-stone-500">EN</span>
           </button>
 
           <!-- Theme Toggle Button -->
           <button
             id="theme-toggle"
             type="button"
-            class="p-2 rounded-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
+            class="p-2 rounded-md border border-stone-200 dark:border-[#2c2c28] text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-[#1c1c1a] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
             aria-label="Alternar tema claro/escuro / Toggle light/dark theme"
             title="Alternar tema / Toggle theme"
           >
@@ -172,7 +173,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
           <button
             id="mobile-menu-btn"
             type="button"
-            class="md:hidden p-2 rounded-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
+            class="md:hidden p-2 rounded-md border border-stone-200 dark:border-[#2c2c28] text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-[#1c1c1a] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
             aria-expanded="false"
             aria-controls="mobile-menu"
             aria-label="Abrir menu de navegação / Open navigation menu"
@@ -187,44 +188,44 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
       </div>
 
       <!-- Mobile Dropdown Navigation -->
-      <nav id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 space-y-2 text-sm font-medium">
-        <a href="#principles" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+      <nav id="mobile-menu" class="hidden md:hidden border-t border-[#e5e5dc] dark:border-[#2c2c28] bg-[#fbfbfa] dark:bg-[#141413] px-4 py-3 space-y-2 text-sm font-medium">
+        <a href="#principles" class="block py-1.5 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
           <span class="lang-pt">Princípios</span>
           <span class="lang-en">Principles</span>
         </a>
-        <a href="#projects" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <a href="#projects" class="block py-1.5 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
           <span class="lang-pt">Projetos</span>
           <span class="lang-en">Projects</span>
         </a>
-        <a href="#journal" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <a href="#journal" class="block py-1.5 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
           <span class="lang-pt">Diário Técnico</span>
           <span class="lang-en">Technical Journal</span>
         </a>
-        <a href="#learning" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <a href="#learning" class="block py-1.5 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
           <span class="lang-pt">Estudos</span>
           <span class="lang-en">Learning</span>
         </a>
-        <a href="#about" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <a href="#about" class="block py-1.5 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
           <span class="lang-pt">Sobre</span>
           <span class="lang-en">About</span>
         </a>
-        <a href="#contact" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+        <a href="#contact" class="block py-1.5 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
           <span class="lang-pt">Contato</span>
           <span class="lang-en">Contact</span>
         </a>
       </nav>
     </header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <!-- Main Content (Full-width to allow alternating section canvas bands) -->
+    <main id="main-content" class="flex-grow w-full">
       <slot />
     </main>
 
     <!-- Site Footer -->
-    <footer class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 text-xs text-slate-500 dark:text-slate-400 py-8 transition-colors duration-200">
+    <footer class="border-t border-[#e5e5dc] dark:border-[#2c2c28] bg-[#f4f4ee] dark:bg-[#10100f] text-xs text-stone-500 dark:text-stone-400 py-8 transition-colors duration-200">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <span class="font-mono font-semibold text-slate-700 dark:text-slate-300">campos.dev</span>
+          <span class="font-mono font-semibold text-stone-700 dark:text-stone-300">campos.dev</span>
           <span class="mx-1.5">•</span>
           <span class="lang-pt">Portfólio e Diário de Engenharia Transparente</span>
           <span class="lang-en">Transparent Engineering Journal & Portfolio</span>
@@ -234,7 +235,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
             href="https://github.com/iGabrielCampos"
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-slate-900 dark:hover:text-slate-200 transition-colors inline-flex items-center gap-1"
+            class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors inline-flex items-center gap-1"
           >
             <span>GitHub</span>
             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -243,7 +244,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </a>
-          <a href="#main-content" class="hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
+          <a href="#main-content" class="hover:text-stone-900 dark:hover:text-stone-200 transition-colors">
             <span class="lang-pt">Voltar ao topo ↑</span>
             <span class="lang-en">Back to top ↑</span>
           </a>
@@ -275,13 +276,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
 
           ptPills.forEach((el) => {
             el.className = isPt
-              ? 'lang-pill-pt px-2 py-1 rounded font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs transition-all'
-              : 'lang-pill-pt px-2 py-1 rounded text-slate-400 dark:text-slate-500 transition-all';
+              ? 'lang-pill-pt font-bold text-stone-900 dark:text-white transition-colors'
+              : 'lang-pill-pt text-stone-400 dark:text-stone-500 transition-colors';
           });
           enPills.forEach((el) => {
             el.className = !isPt
-              ? 'lang-pill-en px-2 py-1 rounded font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs transition-all'
-              : 'lang-pill-en px-2 py-1 rounded text-slate-400 dark:text-slate-500 transition-all';
+              ? 'lang-pill-en font-bold text-stone-900 dark:text-white transition-colors'
+              : 'lang-pill-en text-stone-400 dark:text-stone-500 transition-colors';
           });
 
           if (langBtn) {

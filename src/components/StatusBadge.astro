@@ -71,32 +71,32 @@ const key = normalizeStatus(status);
 const statusConfigs: Record<NormalizedStatus, StatusConfig> = {
   functional: {
     classes: 'bg-emerald-100 text-emerald-900 border-emerald-300 dark:bg-emerald-950/80 dark:text-emerald-200 dark:border-emerald-700/90',
-    dotClasses: 'bg-emerald-600 dark:bg-emerald-400',
-    pulseClasses: 'bg-emerald-400 dark:bg-emerald-500',
+    dotClasses: 'fill-emerald-600 dark:fill-emerald-400',
+    pulseClasses: 'fill-emerald-400 dark:fill-emerald-500',
     labelEn: 'Functional / Near-Complete',
     labelPt: 'Funcional / Quase Concluído',
     ariaLabel: 'Project status: Functional / Near-Complete',
   },
   development: {
     classes: 'bg-amber-100 text-amber-950 border-amber-300 dark:bg-amber-950/80 dark:text-amber-200 dark:border-amber-700/90',
-    dotClasses: 'bg-amber-600 dark:bg-amber-400',
-    pulseClasses: 'bg-amber-400 dark:bg-amber-500',
+    dotClasses: 'fill-amber-600 dark:fill-amber-400',
+    pulseClasses: 'fill-amber-400 dark:fill-amber-500',
     labelEn: 'In Development',
     labelPt: 'Em Desenvolvimento',
     ariaLabel: 'Project status: In Development',
   },
   planning: {
     classes: 'bg-indigo-100 text-indigo-950 border-indigo-300 dark:bg-indigo-950/80 dark:text-indigo-200 dark:border-indigo-700/90',
-    dotClasses: 'bg-indigo-600 dark:bg-indigo-400',
-    pulseClasses: 'bg-indigo-400 dark:bg-indigo-500',
+    dotClasses: 'fill-indigo-600 dark:fill-indigo-400',
+    pulseClasses: 'fill-indigo-400 dark:fill-indigo-500',
     labelEn: 'Planning / Data Modeling Stage',
     labelPt: 'Planejamento / Modelagem de Dados',
     ariaLabel: 'Project status: Planning / Data Modeling Stage',
   },
   exercise: {
     classes: 'bg-slate-100 text-slate-800 border-slate-300 dark:bg-slate-800/90 dark:text-slate-200 dark:border-slate-600',
-    dotClasses: 'bg-slate-500 dark:bg-slate-400',
-    pulseClasses: 'bg-slate-400 dark:bg-slate-500',
+    dotClasses: 'fill-slate-500 dark:fill-slate-400',
+    pulseClasses: 'fill-slate-400 dark:fill-slate-500',
     labelEn: 'Completed as Study Exercise',
     labelPt: 'Concluído como Exercício de Estudo',
     ariaLabel: 'Project status: Completed as Study Exercise',
@@ -122,14 +122,9 @@ const sizeClasses = size === 'sm'
     className,
   ]}
 >
-  <span class="relative flex h-2 w-2" aria-hidden="true">
-    <span
-      class:list={[
-        'inline-flex rounded-full h-2 w-2',
-        config.dotClasses,
-      ]}
-    ></span>
-  </span>
+  <svg class="w-2 h-2 flex-shrink-0" viewBox="0 0 8 8" aria-hidden="true">
+    <circle cx="4" cy="4" r="3.5" class={config.dotClasses} />
+  </svg>
   <span class="lang-pt font-semibold tracking-normal">{labelPt}</span>
   <span class="lang-en font-semibold tracking-normal">{labelEn}</span>
 </span>
