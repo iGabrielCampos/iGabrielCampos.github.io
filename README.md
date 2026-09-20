@@ -3,7 +3,7 @@
 > **Gabriel Campos** — Systems Analysis & Development (*Análise e Desenvolvimento de Sistemas — ADS*) Student  
 > Full-Stack Projects with Python/Django & TypeScript/Node.js • João Pessoa, PB, Brazil
 
-An authentic, "learning in public" developer portfolio and technical journal built with **Astro** and **Tailwind CSS**. Built strictly adhering to the architectural and content-honesty principles defined in [`RULES.md`](./RULES.md), [`PROJECT.md`](./PROJECT.md), and [`AGENTS.md`](./AGENTS.md).
+An authentic, "learning in public" developer portfolio and technical journal built with **Astro** and **Tailwind CSS**. Designed with an uncompromising focus on simplicity, content honesty, and rigorous engineering principles.
 
 ---
 
@@ -40,17 +40,23 @@ The portfolio displays projects across different stages of completion, with prom
 
 ---
 
-## 🤖 Multi-Agent Workflow
+## 🤖 Engineering Architecture & Agent Workflow
 
-This project was built following the multi-agent coordination protocol specified in [`AGENTS.md`](./AGENTS.md):
+The architecture and content of this portfolio were built through a disciplined multi-agent pairing workflow, dividing responsibilities across specialized domains:
+
+- **Orchestrator:** Breaks down high-level specifications, routes tasks, and enforces final acceptance criteria.
+- **Content & Writing:** Crafts authentic, first-person bilingual prose and technical journal articles without embellishment.
+- **Data Architecture:** Enforces strictly-typed schemas for projects, principles, and journal entries.
+- **Frontend Architecture:** Develops modular Astro components, semantic Tailwind tokens, and responsive layouts.
+- **QA & Verification:** Conducts rigorous line-by-line compliance audits against accessibility (WCAG AA), content honesty, and performance standards.
 
 ```mermaid
 flowchart TD
-    ORC["Orchestrator Agent\n(Work Breakdown, Rules Enforcement, Final Sign-off)"]
-    CWA["Content/Writing Agent\n(Bilingual Prose & Journal Articles)"]
-    CDA["Content/Data Agent\n(Typed Schemas & Project Data)"]
-    FA["Frontend Agent\n(Astro Scaffolding, Tailwind Tokens, Component Assembly)"]
-    QA["QA/Rules Agent\n(Line-by-line Audit against RULES.md Checklist)"]
+    ORC["Orchestrator\n(Task Decomposition, Quality Gates, Final Sign-off)"]
+    CWA["Content & Writing\n(Bilingual Prose & Technical Journal)"]
+    CDA["Data Architecture\n(Strict TypeScript Schemas & Content Models)"]
+    FA["Frontend Architecture\n(Astro Components, Tailwind Tokens, Layouts)"]
+    QA["QA & Verification\n(Accessibility, Contrast & Content Honesty Audit)"]
 
     ORC --> CWA
     ORC --> CDA
@@ -72,8 +78,8 @@ flowchart TD
 ### Installation & Development
 ```bash
 # Clone the repository
-git clone https://github.com/iGabrielCampos/Portfolio.git
-cd Portfolio
+git clone https://github.com/iGabrielCampos/igabrielcampos.github.io.git
+cd igabrielcampos.github.io
 
 # Install dependencies
 npm install
