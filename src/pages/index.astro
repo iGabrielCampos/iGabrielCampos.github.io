@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Principles from '../components/Principles.astro';
+import Projects from '../components/Projects.astro';
+import Journal from '../components/Journal.astro';
+import Learning from '../components/Learning.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+import { portfolioContent } from '../data/content';
+
+const pt = portfolioContent['pt-BR'];
+---
+
+<BaseLayout
+  title={`${pt.meta.name} | Portfólio & Diário de Engenharia`}
+  description={pt.hero.headline}
+>
+  <!-- 1. Hero Section -->
+  <Hero />
+
+  <!-- 2. Engineering Principles -->
+  <Principles />
+
+  <!-- 3. Projects (in strict order: CineTrack, TS API, Radio Booking, C Exercises) -->
+  <Projects />
+
+  <!-- 4. Technical Journal -->
+  <Journal />
+
+  <!-- 5. Currently Learning -->
+  <Learning />
+
+  <!-- 6. About -->
+  <About />
+
+  <!-- 7. Contact -->
+  <Contact />
+</BaseLayout>

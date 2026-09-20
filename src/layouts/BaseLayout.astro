@@ -1,0 +1,334 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Portfolio | Dev & Engineering Journal',
+  description = 'Estudante de Análise e Desenvolvimento de Sistemas construindo em público com Python, Django e TypeScript. / Systems Analysis student building in public.',
+  ogImage = '/og-image.svg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabrielcampos.github.io');
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, canonicalURL)} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, canonicalURL)} />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+    <!-- Early Theme and Language Initialization Script (Prevents FOUC) -->
+    <script is:inline>
+      (function () {
+        try {
+          const storedTheme = localStorage.getItem('portfolio_theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = storedTheme ? storedTheme : prefersDark ? 'dark' : 'light';
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {
+          console.error(e);
+        }
+
+        try {
+          const storedLang = localStorage.getItem('portfolio_lang');
+          const browserLang =
+            navigator.language && navigator.language.toLowerCase().startsWith('pt')
+              ? 'pt-BR'
+              : 'en';
+          const lang = storedLang ? storedLang : browserLang;
+          document.documentElement.lang = lang;
+          document.documentElement.setAttribute('data-lang', lang);
+        } catch (e) {
+          console.error(e);
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-surface-light dark:bg-surface-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+    <!-- Accessible Skip to Content Link -->
+    <a href="#main-content" class="skip-to-content focus:outline-none focus:ring-2 focus:ring-sky-500">
+      <span class="lang-pt">Pular para o conteúdo principal</span>
+      <span class="lang-en">Skip to main content</span>
+    </a>
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-colors duration-200">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <!-- Site Logo / Branding -->
+        <a
+          href="/"
+          class="flex items-center gap-2 text-slate-900 dark:text-white font-mono font-bold text-sm tracking-tight hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+          aria-label="Portfolio Home"
+        >
+          <span class="text-sky-600 dark:text-sky-400 font-extrabold">&gt;</span>
+          <span>campos<span class="text-slate-400 dark:text-slate-500 font-normal">.dev</span></span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <a href="#principles" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span class="lang-pt">Princípios</span>
+            <span class="lang-en">Principles</span>
+          </a>
+          <a href="#projects" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span class="lang-pt">Projetos</span>
+            <span class="lang-en">Projects</span>
+          </a>
+          <a href="#journal" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span class="lang-pt">Diário</span>
+            <span class="lang-en">Journal</span>
+          </a>
+          <a href="#learning" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span class="lang-pt">Estudos</span>
+            <span class="lang-en">Learning</span>
+          </a>
+          <a href="#about" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span class="lang-pt">Sobre</span>
+            <span class="lang-en">About</span>
+          </a>
+          <a href="#contact" class="hover:text-slate-900 dark:hover:text-white transition-colors">
+            <span class="lang-pt">Contato</span>
+            <span class="lang-en">Contact</span>
+          </a>
+        </nav>
+
+        <!-- Right Controls: Language & Theme Toggle -->
+        <div class="flex items-center gap-2">
+          <!-- Language Selector Button -->
+          <button
+            id="lang-toggle"
+            type="button"
+            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-mono font-semibold border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+            aria-label="Alternar idioma / Toggle language"
+            title="Alternar idioma / Toggle language"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="current-lang-text">PT-BR</span>
+          </button>
+
+          <!-- Theme Toggle Button -->
+          <button
+            id="theme-toggle"
+            type="button"
+            class="p-2 rounded-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+            aria-label="Alternar tema claro/escuro / Toggle light/dark theme"
+            title="Alternar tema / Toggle theme"
+          >
+            <!-- Sun icon for light mode toggle (shown in dark mode) -->
+            <svg class="theme-icon-light hidden w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon icon for dark mode toggle (shown in light mode) -->
+            <svg class="theme-icon-dark hidden w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Button -->
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="md:hidden p-2 rounded-md border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Abrir menu de navegação / Open navigation menu"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="4" y1="6" x2="20" y2="6"></line>
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <line x1="4" y1="18" x2="20" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <nav id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-3 space-y-2 text-sm font-medium">
+        <a href="#principles" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+          <span class="lang-pt">Princípios</span>
+          <span class="lang-en">Principles</span>
+        </a>
+        <a href="#projects" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+          <span class="lang-pt">Projetos</span>
+          <span class="lang-en">Projects</span>
+        </a>
+        <a href="#journal" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+          <span class="lang-pt">Diário Técnico</span>
+          <span class="lang-en">Technical Journal</span>
+        </a>
+        <a href="#learning" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+          <span class="lang-pt">Estudos</span>
+          <span class="lang-en">Learning</span>
+        </a>
+        <a href="#about" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+          <span class="lang-pt">Sobre</span>
+          <span class="lang-en">About</span>
+        </a>
+        <a href="#contact" class="block py-1.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+          <span class="lang-pt">Contato</span>
+          <span class="lang-en">Contact</span>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <slot />
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 text-xs text-slate-500 dark:text-slate-400 py-8 transition-colors duration-200">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="font-mono font-semibold text-slate-700 dark:text-slate-300">campos.dev</span>
+          <span class="mx-1.5">•</span>
+          <span class="lang-pt">Portfólio e Diário de Engenharia Transparente</span>
+          <span class="lang-en">Transparent Engineering Journal & Portfolio</span>
+        </div>
+        <div class="flex items-center gap-4 font-mono">
+          <a
+            href="https://github.com/iGabrielCampos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-slate-900 dark:hover:text-slate-200 transition-colors inline-flex items-center gap-1"
+          >
+            <span>GitHub</span>
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <a href="#main-content" class="hover:text-slate-900 dark:hover:text-slate-200 transition-colors">
+            <span class="lang-pt">Voltar ao topo ↑</span>
+            <span class="lang-en">Back to top ↑</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Client Script for Theme & Language Handling -->
+    <script>
+      function setupInteractions() {
+        const themeBtn = document.getElementById('theme-toggle');
+        const langBtn = document.getElementById('lang-toggle');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Theme sync function
+        function updateThemeIcons(isDark: boolean) {
+          const lightIcons = document.querySelectorAll('.theme-icon-light');
+          const darkIcons = document.querySelectorAll('.theme-icon-dark');
+          lightIcons.forEach((el) => el.classList.toggle('hidden', !isDark));
+          darkIcons.forEach((el) => el.classList.toggle('hidden', isDark));
+        }
+
+        // Lang sync function
+        function updateLangText(lang: string) {
+          const langTexts = document.querySelectorAll('.current-lang-text');
+          langTexts.forEach((el) => {
+            el.textContent = lang === 'pt-BR' ? 'PT-BR' : 'EN';
+          });
+        }
+
+        // Initial UI sync
+        const isDark = document.documentElement.classList.contains('dark');
+        updateThemeIcons(isDark);
+        updateLangText(document.documentElement.lang || 'pt-BR');
+
+        // Theme Toggle Event
+        if (themeBtn) {
+          themeBtn.addEventListener('click', () => {
+            const nextDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('portfolio_theme', nextDark ? 'dark' : 'light');
+            updateThemeIcons(nextDark);
+          });
+        }
+
+        // Language Toggle Event
+        if (langBtn) {
+          langBtn.addEventListener('click', () => {
+            const currentLang = document.documentElement.lang || 'pt-BR';
+            const nextLang = currentLang === 'pt-BR' ? 'en' : 'pt-BR';
+            document.documentElement.lang = nextLang;
+            document.documentElement.setAttribute('data-lang', nextLang);
+            localStorage.setItem('portfolio_lang', nextLang);
+            updateLangText(nextLang);
+          });
+        }
+
+        // Mobile Menu Event
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener('click', () => {
+            const expanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', String(!expanded));
+            mobileMenu.classList.toggle('hidden');
+          });
+
+          // Close mobile menu on link click
+          mobileMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.add('hidden');
+              mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+          });
+        }
+      }
+
+      // Execute on DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupInteractions);
+      } else {
+        setupInteractions();
+      }
+    </script>
+  </body>
+</html>

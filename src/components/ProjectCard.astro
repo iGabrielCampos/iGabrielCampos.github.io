@@ -1,0 +1,168 @@
+---
+import type { ProjectItemData } from '../data/content';
+import StatusBadge from './StatusBadge.astro';
+
+interface Props {
+  ptProject: ProjectItemData;
+  enProject: ProjectItemData;
+}
+
+const { ptProject, enProject } = Astro.props;
+---
+
+<article
+  id={`project-${ptProject.id}`}
+  class:list={[
+    'p-6 sm:p-8 rounded-xl border bg-white dark:bg-slate-900/60 shadow-sm transition-all',
+    ptProject.isFlagship
+      ? 'border-sky-300 dark:border-sky-800/80 ring-1 ring-sky-500/20'
+      : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700',
+  ]}
+>
+  <!-- Card Header: Title, Tags & Prominent Status Badge -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+    <div class="space-y-1">
+      <div class="flex items-center gap-2 flex-wrap">
+        <h4 class="text-xl sm:text-2xl font-bold font-mono tracking-tight text-slate-900 dark:text-white">
+          {ptProject.title}
+        </h4>
+        {ptProject.isFlagship && (
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 border border-sky-300 dark:border-sky-700">
+            <span class="lang-pt">Projeto Principal</span>
+            <span class="lang-en">Flagship</span>
+          </span>
+        )}
+        {ptProject.isComplementary && (
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            <span class="lang-pt">Prática Fundamental</span>
+            <span class="lang-en">Foundational Practice</span>
+          </span>
+        )}
+      </div>
+
+      <!-- One-line Pitch -->
+      <p class="text-sm font-medium text-slate-700 dark:text-slate-300 leading-normal">
+        <span class="lang-pt">{ptProject.pitch}</span>
+        <span class="lang-en">{enProject.pitch}</span>
+      </p>
+    </div>
+
+    <!-- Mandatory Prominent Status Badge -->
+    <div class="flex-shrink-0 self-start sm:self-center">
+      <StatusBadge
+        status={ptProject.status.code || ptProject.status.label}
+        labelPt={ptProject.status.label}
+        labelEn={enProject.status.label}
+      />
+    </div>
+  </div>
+
+  <!-- Real Stakeholder Context Callout (if present) -->
+  {ptProject.stakeholderContext && (
+    <div class="my-3 px-3.5 py-2 rounded-lg bg-sky-50/60 dark:bg-sky-950/30 border border-sky-200/80 dark:border-sky-900/60 text-xs text-sky-900 dark:text-sky-300 flex items-start gap-2">
+      <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <div>
+        <span class="font-semibold font-mono uppercase text-[11px] block">
+          <span class="lang-pt">Contexto Real do Projeto</span>
+          <span class="lang-en">Real Project Context</span>
+        </span>
+        <span class="lang-pt">{ptProject.stakeholderContext}</span>
+        <span class="lang-en">{enProject.stakeholderContext}</span>
+      </div>
+    </div>
+  )}
+
+  <!-- 2-4 Sentence Description -->
+  <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+    <span class="lang-pt">{ptProject.description}</span>
+    <span class="lang-en">{enProject.description}</span>
+  </p>
+
+  <!-- Dedicated Subsection: Architectural Decisions & Trade-offs -->
+  <div class="my-5 p-4 sm:p-5 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/50 space-y-3">
+    <div class="flex items-center gap-2">
+      <svg class="w-4 h-4 text-sky-600 dark:text-sky-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+      </svg>
+      <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
+        <span class="lang-pt">Decisões Arquiteturais e Trade-offs</span>
+        <span class="lang-en">Architectural Decisions & Trade-offs</span>
+      </h5>
+    </div>
+
+    <div>
+      <h6 class="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-1">
+        <span class="lang-pt">{ptProject.architecturalDecisions.title}</span>
+        <span class="lang-en">{enProject.architecturalDecisions.title}</span>
+      </h6>
+      <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-2">
+        <span class="lang-pt">{ptProject.architecturalDecisions.details}</span>
+        <span class="lang-en">{enProject.architecturalDecisions.details}</span>
+      </p>
+      <div class="text-xs p-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
+        <span class="font-semibold font-mono text-[11px] text-sky-700 dark:text-sky-300 block mb-0.5">
+          <span class="lang-pt">Trade-off / Análise:</span>
+          <span class="lang-en">Trade-off / Analysis:</span>
+        </span>
+        <span class="lang-pt">{ptProject.architecturalDecisions.tradeoffs}</span>
+        <span class="lang-en">{enProject.architecturalDecisions.tradeoffs}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech Stack Pills -->
+  <div class="mb-5">
+    <span class="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2">
+      <span class="lang-pt">Tecnologias Utilizadas</span>
+      <span class="lang-en">Technologies</span>
+    </span>
+    <div class="flex flex-wrap gap-1.5">
+      {ptProject.stack.map((tech) => (
+        <span class="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">
+          {tech}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Transparent Links & Deployment Status Footer -->
+  <div class="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+    <!-- Honest Deployment Note -->
+    <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+      <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <span class="lang-pt">{ptProject.links.deployStatusNote}</span>
+      <span class="lang-en">{enProject.links.deployStatusNote}</span>
+    </div>
+
+    <!-- Action Links (only rendered if they genuinely exist) -->
+    <div class="flex items-center gap-3">
+      {ptProject.links.repo ? (
+        <a
+          href={ptProject.links.repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md font-mono font-semibold bg-slate-900 text-white dark:bg-slate-800 dark:text-slate-200 hover:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+          </svg>
+          <span>Repositório / Repo</span>
+          <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </a>
+      ) : (
+        <span class="inline-flex items-center gap-1 text-slate-400 dark:text-slate-600 font-mono text-[11px] italic">
+          <span class="lang-pt">(Código local / Repo pendente)</span>
+          <span class="lang-en">(Local code / Repo pending)</span>
+        </span>
+      )}
+    </div>
+  </div>
+</article>

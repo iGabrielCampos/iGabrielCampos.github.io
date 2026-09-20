@@ -1,0 +1,1487 @@
+import type {
+  Project,
+  Principle,
+  JournalPost as TypesJournalPost,
+  ProfileInfo,
+  LearningTopic,
+  AboutSection
+} from './types';
+
+export type Locale = 'pt-BR' | 'en';
+
+export type ProjectStatusCode =
+  | 'functional_near_complete'
+  | 'in_development'
+  | 'planning_modeling'
+  | 'completed_study_exercise';
+
+export interface ProjectStatus {
+  code: ProjectStatusCode;
+  label: string;
+  badgeVariant: 'near-complete' | 'in-development' | 'planning' | 'study';
+}
+
+export interface ProjectLinksData {
+  repo: string | null;
+  demo: string | null;
+  docs: string | null;
+  notes: string | null;
+  hasLiveDemo: boolean;
+  deployStatusNote: string;
+}
+
+export interface ArchitecturalDecisionData {
+  title: string;
+  details: string;
+  tradeoffs: string;
+}
+
+export interface ProjectItemData {
+  id: string;
+  title: string;
+  order: number;
+  status: ProjectStatus;
+  pitch: string;
+  description: string;
+  stakeholderContext?: string;
+  architecturalDecisions: ArchitecturalDecisionData;
+  stack: string[];
+  honestStatusNote: string;
+  links: ProjectLinksData;
+  highlights: string[];
+  isFlagship?: boolean;
+  isComplementary?: boolean;
+}
+
+export interface JournalPostData {
+  id: string;
+  slug: string;
+  title: string;
+  date: string;
+  readTime: string;
+  summary: string;
+  tags: string[];
+  content: string;
+}
+
+export interface PrincipleItemData {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+}
+
+export interface LearningItemData {
+  id: string;
+  topic: string;
+  category: string;
+  status: string;
+  description: string;
+  focusAreas: string[];
+}
+
+export interface PortfolioContent {
+  meta: {
+    name: string;
+    role: string;
+    location: string;
+    email: string;
+    github: string;
+    linkedin: string;
+    resumeUrl: string;
+    availabilityStatus: string;
+  };
+  navigation: {
+    projects: string;
+    principles: string;
+    journal: string;
+    learning: string;
+    about: string;
+    contact: string;
+    switchLanguage: string;
+  };
+  hero: {
+    greeting: string;
+    name: string;
+    headline: string;
+    subheadline: string;
+    statusBadge: string;
+    ctaPrimary: {
+      label: string;
+      href: string;
+    };
+    ctaSecondary: {
+      label: string;
+      href: string;
+    };
+  };
+  principles: {
+    sectionTag: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    items: PrincipleItemData[];
+  };
+  projects: {
+    sectionTag: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    honestyBanner: {
+      title: string;
+      message: string;
+    };
+    items: ProjectItemData[];
+  };
+  journal: {
+    sectionTag: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    readMoreLabel: string;
+    items: JournalPostData[];
+  };
+  learning: {
+    sectionTag: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    items: LearningItemData[];
+  };
+  about: {
+    sectionTag: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    paragraphs: string[];
+    quickFactsTitle: string;
+    quickFacts: Array<{
+      label: string;
+      value: string;
+    }>;
+  };
+  contact: {
+    sectionTag: string;
+    sectionTitle: string;
+    sectionSubtitle: string;
+    opportunityHeadline: string;
+    message: string;
+    locationLabel: string;
+    locationValue: string;
+    statusLabel: string;
+    statusValue: string;
+    emailActionLabel: string;
+    viewResumeLabel: string;
+  };
+}
+
+// --------------------------------------------------------------------------
+// 1. Structured Bundle: Portuguese (pt-BR) & English (en)
+// --------------------------------------------------------------------------
+
+export const portfolioContent: Record<Locale, PortfolioContent> = {
+  'pt-BR': {
+    meta: {
+      name: 'Gabriel Campos',
+      role: 'Estudante de Análise e Desenvolvimento de Sistemas',
+      location: 'João Pessoa, PB - Brasil',
+      email: 'gabriel.a.c.crispim2008@gmail.com',
+      github: 'https://github.com/iGabrielCampos',
+      linkedin: 'https://www.linkedin.com/in/igabrielcampos/',
+      resumeUrl: '/assets/curriculo-gabriel-campos.pdf',
+      availabilityStatus: 'Disponível para estágio em desenvolvimento de software'
+    },
+    navigation: {
+      projects: 'Projetos',
+      principles: 'Princípios',
+      journal: 'Diário Técnico',
+      learning: 'Estudos Atuais',
+      about: 'Sobre',
+      contact: 'Contato',
+      switchLanguage: 'English'
+    },
+    hero: {
+      greeting: 'Olá, sou o Gabriel',
+      name: 'Gabriel Campos',
+      headline: 'Estudante de Análise e Desenvolvimento de Sistemas (ADS) construindo aplicações full-stack com Python/Django e TypeScript/Node.js.',
+      subheadline: 'Construindo software com foco em simplicidade, fundamentos de computação e transparência total no processo. Documentando a transição da lógica algorítmica em C para arquiteturas web e APIs RESTful.',
+      statusBadge: 'Disponível para estágio em desenvolvimento de software',
+      ctaPrimary: {
+        label: 'Ver Projetos',
+        href: '#projects'
+      },
+      ctaSecondary: {
+        label: 'Entrar em Contato',
+        href: '#contact'
+      }
+    },
+    principles: {
+      sectionTag: 'Como Eu Trabalho',
+      sectionTitle: 'Princípios de Engenharia',
+      sectionSubtitle: 'Diretrizes pragmáticas que orientam cada linha de código, modelagem de dados e decisão técnica que tomo.',
+      items: [
+        {
+          id: 'learn-in-public',
+          number: '01',
+          title: 'Aprender em público',
+          description: 'Não escondo projetos inacabados nem finjo que tudo nasce pronto para produção. Compartilhar rascunhos, diagramas conceituais, decisões arquiteturais e tropeços acelera o aprendizado e constrói confiança profissional genuína.'
+        },
+        {
+          id: 'avoid-overengineering',
+          number: '02',
+          title: 'Evitar superengenharia (Simplicidade primeiro)',
+          description: 'A melhor solução é a mais direta e funcional que resolve a dor real. Evito microsserviços precoces, camadas desnecessárias de abstração e complexidade arquitetural especulativa antes que o domínio realmente exija.'
+        },
+        {
+          id: 'radical-transparency',
+          number: '03',
+          title: 'Transparência radical',
+          description: 'Sem métricas inventadas, sem números fictícios de usuários e sem links de deploy simulados. Se um projeto está em fase de modelagem ou ainda não foi publicado na nuvem, isso é declarado explicitamente.'
+        },
+        {
+          id: 'disciplined-ai',
+          number: '04',
+          title: 'Uso disciplinado de IA com revisão humana',
+          description: 'Utilizo ferramentas de inteligência artificial como aceleradoras de produtividade e pesquisa, mas toda linha de código, restrição de modelo e decisão de arquitetura é compreendida, validada e mantida com critério humano.'
+        }
+      ]
+    },
+    projects: {
+      sectionTag: 'Portfólio Técnico',
+      sectionTitle: 'Projetos e Roteiro de Construção',
+      sectionSubtitle: 'Exibição honesta do meu trabalho em diferentes fases de maturidade: do funcional ao planejamento conceitual.',
+      honestyBanner: {
+        title: 'Critério de Transparência',
+        message: 'Cada card apresenta o status real do projeto. Nenhum deploy ausente é omitido e nenhum exercício básico é inflado como produto corporativo.'
+      },
+      items: [
+        {
+          id: 'cinetrack',
+          order: 1,
+          title: 'CineTrack',
+          status: {
+            code: 'functional_near_complete',
+            label: 'Funcional / Quase Concluído',
+            badgeVariant: 'near-complete'
+          },
+          pitch: 'Aplicação web completa para pesquisa, catálogo e acompanhamento de séries de TV com integração à API pública do TVmaze.',
+          description: 'Desenvolvido com Python e Django, o CineTrack permite a autenticação de usuários, busca de séries via API externa com paginação, visualização detalhada com sinopses, gêneros, elenco e classificações, além de registro de histórico personalizado por conta. O projeto conta com uma camada dedicada de API REST construída com Django REST Framework (DRF), implementando serializadores, viewsets e roteamento para operações CRUD sobre o catálogo monitorado.',
+          stakeholderContext: 'Projeto pessoal principal de consolidação full-stack em Django, unindo interface server-rendered, autenticação, consumo de APIs externas e camada de API REST.',
+          architecturalDecisions: {
+            title: 'Armazenamento enxuto de histórico via ID externo vs. Duplicação de dados',
+            details: 'Em vez de duplicar tabelas pesadas com sinopses, pôsteres e metadados no SQLite local a cada consulta, a modelagem de histórico armazena exclusivamente a relação entre o usuário e o identificador numérico da série no TVmaze (ID externo). Os detalhes completos são requisitados sob demanda à API na visualização.',
+            tradeoffs: 'Vantagem: O banco de dados local permanece ultraleve, sem risco de dados de séries ficarem desatualizados ou inconsistentes. Compensação: Cada exibição de detalhes depende de uma chamada de rede externa, tornando a adição de um cache HTTP leve o próximo passo ideal de evolução.'
+          },
+          stack: [
+            'Python',
+            'Django',
+            'Django REST Framework',
+            'SQLite',
+            'HTML/CSS',
+            'Django Templates',
+            'TVmaze API'
+          ],
+          honestStatusNote: 'Aplicação funcional em ambiente local. Pendente apenas de empacotamento final: refinamento do README com instruções de instalação, conferência do requirements.txt, documentação das rotas da API e configuração do deploy inicial (atualmente sem link público ativo).',
+          links: {
+            repo: 'https://github.com/iGabrielCampos/CineTrack',
+            demo: null,
+            docs: null,
+            notes: null,
+            hasLiveDemo: false,
+            deployStatusNote: 'Deploy público em preparação. Atualmente executável via ambiente local.'
+          },
+          highlights: [
+            'Camada de API REST construída com Django REST Framework (DRF)',
+            'Autenticação de usuários e histórico individual de buscas e acessos',
+            'Integração resiliente com API REST externa (TVmaze)'
+          ],
+          isFlagship: true
+        },
+        {
+          id: 'api-backend-typescript',
+          order: 2,
+          title: 'API Backend — TypeScript',
+          status: {
+            code: 'in_development',
+            label: 'Em Desenvolvimento',
+            badgeVariant: 'in-development'
+          },
+          pitch: 'API RESTful para autenticação e governança de usuários, desenvolvida como estudo estruturado de arquitetura backend no ecossistema Node.js.',
+          description: 'Construída em TypeScript com foco em boas práticas de engenharia de software, a API abrange o ciclo de vida do usuário: cadastro, login com emissão de tokens JWT com expiração configurada, criptografia de senhas com bcryptjs, validação estrita de esquemas na entrada com Zod e tratamento centralizado de exceções com códigos de status HTTP padronizados.',
+          stakeholderContext: 'Exercício orientado ao aprofundamento de padrões arquiteturais em Node.js com tipagem estática e desacoplamento de camadas de negócio e persistência.',
+          architecturalDecisions: {
+            title: 'Avaliação ativa: Express vs. Fastify & Prisma vs. TypeORM',
+            details: 'O projeto foi desenhado para avaliar comparativamente duas decisões de stack fundamentais: no servidor HTTP, a maturidade consolidada e ecossistema do Express versus a performance superior e validação por esquemas nativa do Fastify; na camada de persistência, a ergonomia tipada ponta a ponta do Prisma versus o padrão clássico Data Mapper/Active Record do TypeORM.',
+            tradeoffs: 'Em vez de escolher ferramentas por padrão ou cópia de tutoriais, estou prototipando módulos nas alternativas para mensurar tempo de inicialização, tipagem estrita de payloads e facilidade na escrita de testes automatizados.'
+          },
+          stack: [
+            'TypeScript',
+            'Node.js',
+            'Express ou Fastify (em avaliação)',
+            'Prisma ou TypeORM (em avaliação)',
+            'Zod',
+            'bcryptjs',
+            'JSON Web Tokens (JWT)'
+          ],
+          honestStatusNote: 'Projeto em desenvolvimento ativo no ambiente local. Módulos de validação e esquemas de autenticação em estruturação. O repositório no GitHub será tornado público assim que os benchmarks das escolhas de framework e ORM forem fechados.',
+          links: {
+            repo: null,
+            demo: null,
+            docs: null,
+            notes: null,
+            hasLiveDemo: false,
+            deployStatusNote: 'Em construção ativa no ambiente local; sem deploy em produção nesta etapa.'
+          },
+          highlights: [
+            'Validação de tipos e payloads em tempo de execução com esquemas Zod',
+            'Fluxo de autenticação seguro com JWT e hashing salgado via bcryptjs',
+            'Arquitetura em camadas com separação nítida de responsabilidades'
+          ]
+        },
+        {
+          id: 'radio-studio-booking',
+          order: 3,
+          title: 'Sistema de Reserva de Estúdios de Rádio',
+          status: {
+            code: 'planning_modeling',
+            label: 'Planejamento / Modelagem de Dados',
+            badgeVariant: 'planning'
+          },
+          pitch: 'Sistema para coordenação de reservas e disponibilidade de estúdios compartilhados entre duas emissoras de rádio, originado de uma demanda real.',
+          description: 'O projeto nasceu de uma dor operacional concreta trazida por um gestor de rádio: organizar a ocupação de cabines de gravação compartilhadas entre duas emissoras irmãs. O escopo abrange o cadastro de emissoras, estúdios acústicos, produtores e técnicos de som, controle de agendamentos com validação de conflitos de horário, rastreamento de estados operacionais e registro formal da validação técnica de cada sessão.',
+          stakeholderContext: 'Originado diretamente de uma necessidade operacional de um gestor de rádio real, e não de um briefing de curso fictício.',
+          architecturalDecisions: {
+            title: 'Modelagem Entidade-Relacionamento (DER) antes de qualquer linha de código',
+            details: 'Todo o foco do projeto até o momento foi direcionado à modelagem conceitual e lógica do banco de dados relacional (DER). Foram modeladas entidades distintas para Emissora, Estúdio, Reserva, Usuário Solicitante, Técnico Responsável e Histórico de Ocupação, desenhando a máquina de estados do estúdio (Livre, Ocupado, Reservado, Manutenção/Limpeza, Indisponível) e formulando a consulta relacional de não-sobreposição temporal.',
+            tradeoffs: 'A decisão de investir no rigor da modelagem de dados antes de codificar telas ou rotas previne retrabalhos críticos: a concorrência pelo técnico de áudio (além da própria cabine) foi identificada e resolvida diretamente no esquema relacional.'
+          },
+          stack: [
+            'Python (planejado)',
+            'Django (planejado)',
+            'Modelagem Relacional (DER)',
+            'PostgreSQL ou SQLite',
+            'REST API (em análise)'
+          ],
+          honestStatusNote: 'Etapa de planejamento e modelagem conceitual/lógica concluída (DER finalizado). Nenhuma linha de aplicação web ou interface foi escrita até o momento. O projeto não possui código executável ou versão online nesta fase.',
+          links: {
+            repo: null,
+            demo: null,
+            docs: null,
+            notes: null,
+            hasLiveDemo: false,
+            deployStatusNote: 'Fase de modelagem conceitual (DER). Não há aplicação executável ou deploy no momento.'
+          },
+          highlights: [
+            'Concebido a partir da demanda real de um gestor de emissora de rádio',
+            'Diagrama Entidade-Relacionamento (DER) normalizado para evitar conflitos de agenda',
+            'Máquina de estados contemplando tempos de limpeza e alocação de técnicos'
+          ]
+        },
+        {
+          id: 'estudos-c',
+          order: 4,
+          title: 'Estudos em C (Exercícios Fundamentais)',
+          status: {
+            code: 'completed_study_exercise',
+            label: 'Concluído como Exercício de Estudo',
+            badgeVariant: 'study'
+          },
+          pitch: 'Repositório de exercícios de fixação em linguagem C explorando fundamentos de lógica algorítmica, manipulação de números e controle de fluxo.',
+          description: 'Conjunto de programas em linguagem C estruturados por temas: estruturas de repetição (while, for, do-while), operadores condicionais, tratamento e aritmética numérica, noções de ponteiros e pequenos jogos interativos via terminal. Funciona como base da minha formação, comprovando a disciplina em dominar os fundamentos antes de abstrações de alto nível.',
+          stakeholderContext: 'Prática de fundamentos e consolidação acadêmica da disciplina de introdução à programação.',
+          architecturalDecisions: {
+            title: 'Compreensão do modelo de memória e controle explícito como alicerce',
+            details: 'A prática em C estabeleceu uma compreensão clara de conceitos que linguagens modernas com garbage collector ocultam: diferença entre pilha (stack) e heap, passagem de parâmetros por valor vs. referência, gerenciamento de buffers e eficiência computacional de laços.',
+            tradeoffs: 'Exercícios sem finalidade comercial ou de produto final, mas indispensáveis para formar um engenheiro capaz de raciocinar sobre o que o compilador e o interpretador realmente executam.'
+          },
+          stack: [
+            'C',
+            'GCC',
+            'Make',
+            'Linux Terminal'
+          ],
+          honestStatusNote: 'Concluído como exercício de estudo. Apresentado intencionalmente como exercício de fundamentos e raízes de programação, sem qualquer pretensão de ser considerado um projeto de produção.',
+          links: {
+            repo: 'https://github.com/iGabrielCampos',
+            demo: null,
+            docs: null,
+            notes: null,
+            hasLiveDemo: false,
+            deployStatusNote: 'Exercícios de terminal executados localmente; não se aplica deploy web.'
+          },
+          highlights: [
+            'Prática de lógica algorítmica pura e controle rigoroso de tipos primitivos',
+            'Domínio de compilação com GCC e execução em ambiente Linux',
+            'Base estruturante que facilitou a transição para Python e TypeScript'
+          ],
+          isComplementary: true
+        }
+      ]
+    },
+    journal: {
+      sectionTag: 'Aprendizado Contínuo',
+      sectionTitle: 'Diário Técnico',
+      sectionSubtitle: 'Artigos curtos e honestos sobre problemas reais de modelagem, arquitetura e trade-offs enfrentados nos meus projetos.',
+      readMoreLabel: 'Ler artigo completo',
+      items: [
+        {
+          id: 'post-tvmaze-lean-storage',
+          slug: 'por-que-armazenar-apenas-id-tvmaze-cinetrack',
+          title: 'Por que armazenar apenas o ID da TVmaze no CineTrack em vez de duplicar dados',
+          date: '15 de Agosto de 2026',
+          readTime: '4 min de leitura',
+          summary: 'Uma análise detalhada sobre o trade-off entre redundância local no banco de dados SQLite e consultas sob demanda a uma API externa.',
+          tags: ['Django', 'Modelagem de Dados', 'APIs REST', 'Arquitetura'],
+          content: `Quando iniciei o desenvolvimento do CineTrack com Python e Django, o primeiro impulso natural foi criar tabelas no banco de dados local para armazenar todas as informações que a API do TVmaze fornecia: nome da série, sinopse completa em texto, links de pôsteres em alta resolução, classificação e lista de episódios.
+
+No entanto, ao modelar a funcionalidade de histórico de buscas e séries visualizadas pelo usuário, percebi um problema crítico: a duplicação de dados geraria inconsistências quase imediatas. Se uma série mudasse de status de exibição, ganhasse nova temporada ou tivesse sua sinopse corrigida na base do TVmaze, os dados salvos no meu SQLite local ficariam desatualizados. Além disso, salvar blocos de texto e metadados volumosos para cada série consultada aumentaria desnecessariamente o tamanho do banco.
+
+A decisão arquitetural adotada foi enxuta e direta: a tabela de histórico no Django (\`UserViewHistory\`) armazena estritamente a chave estrangeira do usuário (\`user_id\`), o carimbo de data/hora (\`viewed_at\`) e o identificador numérico da série (\`tvmaze_show_id\`).
+
+Quando o usuário acessa seu histórico ou clica para abrir uma série, a aplicação utiliza esse identificador para consultar o endpoint \`https://api.tvmaze.com/shows/{id}\` diretamente da API pública do TVmaze.
+
+**O Trade-off:**
+- **Vantagens:** O banco local permanece microscópico e ágil; não há necessidade de rotinas periódicas em segundo plano para sincronizar metadados de catálogo; respeito ao princípio de única fonte da verdade (Single Source of Truth).
+- **Desvantagens:** Dependência da estabilidade da API do TVmaze e latência de rede adicional a cada carregamento de página detalhada.
+
+Como próximo passo de evolução para contornar essa desvantagem sem perder a leveza do banco, o plano é implementar uma camada de cache temporário (usando cache em memória do Django ou Redis) com tempo de vida curto (ex: 24 horas), garantindo resposta rápida para séries acessadas repetidamente sem comprometer a integridade do banco relacional.`
+        },
+        {
+          id: 'post-radio-studio-conflict-modeling',
+          slug: 'modelagem-conflitos-disponibilidade-estudios-radio',
+          title: 'Modelagem de conflitos e disponibilidade em estúdios de rádio compartilhados',
+          date: '02 de Setembro de 2026',
+          readTime: '5 min de leitura',
+          summary: 'Como uma demanda real de um gestor de rádio guiou a construção de um DER capaz de impedir sobreposições de horários e alocação de técnicos.',
+          tags: ['Modelagem Relacional', 'DER', 'Banco de Dados', 'Regras de Negócio'],
+          content: `A maioria dos tutoriais de sistemas de agendamento na internet simplifica o problema a uma tabela com data de início e data de término. No entanto, quando um gestor de rádio me procurou para relatar a dor operacional da sua equipe — duas emissoras irmãs operando no mesmo prédio e dividindo estúdios de gravação —, ficou claro que o problema exigia um rigor relacional muito maior.
+
+O desafio central envolvia múltiplos recursos compartilhados e escassos ao mesmo tempo:
+1. **O espaço físico:** Duas equipes de locução não podem usar a mesma cabine acústica simultaneamente.
+2. **A equipe humana:** Os estúdios necessitam de técnicos de áudio dedicados para operar as mesas e gravações. Um técnico não pode estar em dois estúdios no mesmo intervalo.
+3. **Tempo de transição:** Um estúdio não fica imediatamente liberado após o fim de uma sessão; há uma janela necessária de limpeza e calibração de equipamentos.
+
+Antes de escrever qualquer linha de código em Python ou Django, dediquei semanas exclusivamente ao Diagrama Entidade-Relacionamento (DER).
+
+Estruturamos uma máquina de estados finita para o estúdio: \`LIVRE\`, \`RESERVADO\`, \`OCUPADO\`, \`MANUTENÇÃO_LIMPEZA\` e \`INDISPONÍVEL\`. 
+
+Para a validação matemática de sobreposição de horários, formulamos a restrição relacional em que uma nova reserva \`[novo_inicio, novo_fim]\` entra em conflito se:
+\`\`\`sql
+(novo_inicio < reserva_existente.fim) AND (novo_fim > reserva_existente.inicio)
+\`\`\`
+Essa validação foi espelhada em duas frentes obrigatórias:
+- Não permitir conflito no mesmo \`estudio_id\`;
+- Não permitir conflito para o mesmo \`tecnico_id\`.
+
+Investir tempo no DER antes da codificação evitou refatorações dolorosas. O modelo nasceu preparado para as complexidades operacionais do mundo real, provando que um bom banco de dados resolve metade dos desafios de um software antes mesmo da primeira rota ser compilada.`
+        }
+      ]
+    },
+    learning: {
+      sectionTag: 'Foco de Estudos',
+      sectionTitle: 'O Que Estou Estudando no Momento',
+      sectionSubtitle: 'Tópicos técnicos e fundamentos em que invisto minhas horas de estudo deliberado para evoluir como desenvolvedor.',
+      items: [
+        {
+          id: 'learn-ads',
+          topic: 'Graduação em Análise e Desenvolvimento de Sistemas (ADS)',
+          category: 'Formação Acadêmica',
+          status: 'Em curso',
+          description: 'Aprofundamento curricular em engenharia de software, modelagem de processos de negócio, estruturas de dados, governança de TI e metodologias ágeis em João Pessoa, PB.',
+          focusAreas: [
+            'Engenharia de Requisitos e Casos de Uso',
+            'Estruturas de Dados e Algoritmos',
+            'Padrões de Projeto de Software',
+            'Sistemas Operacionais e Redes'
+          ]
+        },
+        {
+          id: 'learn-typescript-clean-arch',
+          topic: 'Clean Architecture e APIs RESTful em TypeScript/Node.js',
+          category: 'Backend & Engenharia',
+          status: 'Estudo Ativo',
+          description: 'Estudo prático de desacoplamento em camadas (controllers, use-cases/services, repositories), injeção de dependência e validação robusta em tempo de execução com TypeScript estrito.',
+          focusAreas: [
+            'Separação de responsabilidades e camadas de domínio',
+            'Validação com Zod e contratos de tipos estritos',
+            'Autenticação sem estado com JWT e proteção de rotas',
+            'Comparativos de performance entre Express e Fastify'
+          ]
+        },
+        {
+          id: 'learn-database-modeling',
+          topic: 'Normalização e Modelagem de Bancos de Dados Relacionais',
+          category: 'Banco de Dados',
+          status: 'Estudo Ativo',
+          description: 'Domínio das formas normais (1FN a 3FN), criação de Diagramas Entidade-Relacionamento (DER) conceituais e lógicos, integridade referencial e estratégias de indexação.',
+          focusAreas: [
+            'Normalização e eliminação de anomalias relacionais',
+            'Modelagem de restrições de tempo e recursos concorrentes',
+            'Consultas relacionais otimizadas e junções',
+            'Migrações seguras com ORMs relacionais'
+          ]
+        },
+        {
+          id: 'learn-systems-programming',
+          topic: 'Fundamentos de Programação de Sistemas e Lógica Algorítmica',
+          category: 'Ciência da Computação',
+          status: 'Base Consolidada',
+          description: 'Revisão contínua dos alicerces computacionais trabalhados em C, aprofundando o modelo de memória de computadores, ponteiros e eficiência algorítmica.',
+          focusAreas: [
+            'Diferenciação operacional entre Stack e Heap',
+            'Manipulação direta de memória e aritmética de ponteiros',
+            'Análise de complexidade de tempo e espaço de laços',
+            'Ferramentas de terminal Unix, GCC e Makefiles'
+          ]
+        }
+      ]
+    },
+    about: {
+      sectionTag: 'Minha Trajetória',
+      sectionTitle: 'Sobre Mim',
+      sectionSubtitle: 'Um panorama honesto sobre minha formação, minha visão de desenvolvimento e meus objetivos profissionais.',
+      paragraphs: [
+        'Sou estudante de Análise e Desenvolvimento de Sistemas (ADS), residindo em João Pessoa, Paraíba. Minha trajetória na programação começou pelo caminho dos fundamentos: escolhi estudar a linguagem C para entender de perto como a memória funciona, como as estruturas de repetição afetam a execução e como o computador interpreta as instruções antes de me apoiar em abstrações mais altas.',
+        'Com essa fundação consolidada, avancei para o ecossistema Python e Django, desenvolvendo o CineTrack — uma aplicação web funcional onde integrei banco de dados relacional, autenticação de usuários, renderização de templates e uma camada de API REST com Django REST Framework.',
+        'Atualmente, dedico meus estudos à arquitetura de software no ecossistema TypeScript e Node.js, construindo APIs tipadas, modulares e seguras, além de aprofundar a modelagem de bancos de dados a partir de demandas concretas de negócios, como o sistema de reserva de estúdios de rádio.',
+        'Acredito firmemente no aprendizado contínuo, na simplicidade como virtude de engenharia e na transparência profissional. Estou em busca da minha primeira oportunidade de estágio em desenvolvimento de software (remoto ou presencial em João Pessoa), onde possa colaborar ativamente em sistemas reais, aprender com desenvolvedores seniores e agregar valor técnico com seriedade e dedicação.'
+      ],
+      quickFactsTitle: 'Resumo Rápido',
+      quickFacts: [
+        { label: 'Localização', value: 'João Pessoa, PB - Brasil (Aberto a posições remotas)' },
+        { label: 'Curso', value: 'Análise e Desenvolvimento de Sistemas (ADS)' },
+        { label: 'Objetivo Atual', value: 'Estágio em Desenvolvimento de Software' },
+        { label: 'Principais Tecnologias', value: 'Python, Django, DRF, TypeScript, Node.js, C, SQLite/PostgreSQL' },
+        { label: 'Idiomas', value: 'Português (Nativo), Inglês (Leitura e documentação técnica)' }
+      ]
+    },
+    contact: {
+      sectionTag: 'Vamos Conversar',
+      sectionTitle: 'Contato e Oportunidades',
+      sectionSubtitle: 'Estou ativamente disponível para entrevistas e processos seletivos de estágio em desenvolvimento.',
+      opportunityHeadline: 'Buscando estágio em desenvolvimento de software (Remoto ou João Pessoa, PB)',
+      message: 'Se você procura um estagiário com fundamentos sólidos de lógica, disciplina para documentar e aprender em público, domínio prático em Python/Django e TypeScript, e compromisso absoluto com honestidade e boas práticas, terei grande satisfação em conversar com sua equipe.',
+      locationLabel: 'Localização',
+      locationValue: 'João Pessoa, Paraíba, Brasil (Disponível para trabalho remoto ou híbrido/presencial)',
+      statusLabel: 'Disponibilidade',
+      statusValue: 'Imediata para estágio (Carga horária compatível com a graduação)',
+      emailActionLabel: 'Enviar Mensagem',
+      viewResumeLabel: 'Visualizar Currículo (PDF)'
+    }
+  },
+  'en': {
+    meta: {
+      name: 'Gabriel Campos',
+      role: 'Systems Analysis & Development Student',
+      location: 'João Pessoa, PB - Brazil',
+      email: 'gabriel.a.c.crispim2008@gmail.com',
+      github: 'https://github.com/iGabrielCampos',
+      linkedin: 'https://www.linkedin.com/in/igabrielcampos/',
+      resumeUrl: '/assets/curriculo-gabriel-campos.pdf',
+      availabilityStatus: 'Open for software development internship opportunities'
+    },
+    navigation: {
+      projects: 'Projects',
+      principles: 'Principles',
+      journal: 'Tech Journal',
+      learning: 'Currently Learning',
+      about: 'About',
+      contact: 'Contact',
+      switchLanguage: 'Português (BR)'
+    },
+    hero: {
+      greeting: 'Hi, I am Gabriel',
+      name: 'Gabriel Campos',
+      headline: 'Systems Analysis & Development (ADS) student building full-stack applications with Python/Django and TypeScript/Node.js.',
+      subheadline: 'Building software focused on simplicity, computer science fundamentals, and radical process transparency. Documenting my journey in public — from low-level C algorithmic logic to web architectures and RESTful APIs.',
+      statusBadge: 'Open for software development internship opportunities',
+      ctaPrimary: {
+        label: 'View Projects',
+        href: '#projects'
+      },
+      ctaSecondary: {
+        label: 'Get in Touch',
+        href: '#contact'
+      }
+    },
+    principles: {
+      sectionTag: 'How I Work',
+      sectionTitle: 'Engineering Principles',
+      sectionSubtitle: 'Pragmatic rules that guide every line of code, schema decision, and architectural trade-off I make.',
+      items: [
+        {
+          id: 'learn-in-public',
+          number: '01',
+          title: 'Learn in public',
+          description: 'Incomplete projects are displayed as in-progress rather than hidden away. Sharing drafts, conceptual diagrams, architecture trade-offs, and missteps accelerates genuine learning and builds authentic technical trust.'
+        },
+        {
+          id: 'avoid-overengineering',
+          number: '02',
+          title: 'Avoid over-engineering (Simplicity first)',
+          description: 'The best solution is the simplest, direct working code that solves the concrete problem. I avoid premature microservices, needless abstraction layers, and speculative architectural complexity before actual domain constraints require them.'
+        },
+        {
+          id: 'radical-transparency',
+          number: '03',
+          title: 'Radical transparency',
+          description: 'Honest metrics and true project status. No fabricated user numbers, no invented testimonials, and no mocked live deploy links. If a project is in the modeling phase or running locally, that reality is plainly stated.'
+        },
+        {
+          id: 'disciplined-ai',
+          number: '04',
+          title: 'Disciplined AI tooling with human verification',
+          description: 'I leverage artificial intelligence tools to accelerate exploratory research and productivity, but every line of code, schema constraint, and design decision is critically reviewed, thoroughly understood, and owned by human judgment.'
+        }
+      ]
+    },
+    projects: {
+      sectionTag: 'Technical Portfolio',
+      sectionTitle: 'Projects & Engineering Roadmap',
+      sectionSubtitle: 'An honest exhibition of my work across distinct maturity stages: from functional web applications to conceptual data modeling.',
+      honestyBanner: {
+        title: 'Transparency Policy',
+        message: 'Each project card displays its true development status. Missing deploys are clearly acknowledged, and foundational exercises are never misrepresented as enterprise systems.'
+      },
+      items: [
+        {
+          id: 'cinetrack',
+          order: 1,
+          title: 'CineTrack',
+          status: {
+            code: 'functional_near_complete',
+            label: 'Functional / Near-Complete',
+            badgeVariant: 'near-complete'
+          },
+          pitch: 'Full-stack web application for discovering, tracking, and cataloging TV series using the external TVmaze API.',
+          description: 'Built with Python and Django, CineTrack provides user authentication, paginated external TVmaze API searches, detailed show pages featuring genres, synopses, cast, and ratings, alongside per-user search and viewing history. The application features a dedicated REST API layer built with Django REST Framework (DRF), complete with serializers, viewsets, and routers for CRUD operations on tracked series.',
+          stakeholderContext: 'Flagship full-stack project consolidating Django web development, combining server-rendered views, secure authentication, external API integration, and custom DRF endpoints.',
+          architecturalDecisions: {
+            title: 'Lean external ID history storage vs. Local metadata duplication',
+            details: 'Rather than duplicating heavy tables containing synopses, posters, and metadata in the local SQLite database for every search, the user history model strictly stores the relationship between the authenticated user and the external numeric TVmaze show ID. Comprehensive show details are re-fetched on demand from the API during page rendering.',
+            tradeoffs: 'Advantage: Keeps the local database extremely lean and immune to stale or out-of-sync show metadata. Trade-off: Detail pages require an external HTTP request, introducing network dependency that makes lightweight HTTP caching the natural next optimization.'
+          },
+          stack: [
+            'Python',
+            'Django',
+            'Django REST Framework',
+            'SQLite',
+            'HTML/CSS',
+            'Django Templates',
+            'TVmaze API'
+          ],
+          honestStatusNote: 'Functional in a local development environment. Packaging steps remain: final polish on the project README, dependency pinning check in requirements.txt, REST API endpoint documentation, and live hosting deployment (no live link is currently published).',
+          links: {
+            repo: 'https://github.com/iGabrielCampos/CineTrack',
+            demo: null,
+            docs: null,
+            notes: null,
+            hasLiveDemo: false,
+            deployStatusNote: 'Live deployment in preparation. Currently running locally.'
+          },
+          highlights: [
+            'Custom REST API layer built with Django REST Framework (DRF)',
+            'User account management and isolated per-user viewing/search histories',
+            'Resilient external REST API integration consuming TVmaze'
+          ],
+          isFlagship: true
+        },
+        {
+          id: 'api-backend-typescript',
+          order: 2,
+          title: 'API Backend — TypeScript',
+          status: {
+            code: 'in_development',
+            label: 'In Development',
+            badgeVariant: 'in-development'
+          },
+          pitch: 'RESTful API for authentication and user governance, developed as a structured backend architecture exercise in Node.js.',
+          description: 'Engineered in TypeScript with an emphasis on clean architecture and modular separation of concerns. The API covers the full user lifecycle: sign-up, JWT-based login sessions with configurable expiration, secure password hashing using bcryptjs, runtime payload validation via Zod schemas, and centralized error handling with predictable HTTP status responses.',
+          stakeholderContext: 'Backend engineering exercise focused on mastering strict TypeScript typing, decoupled controller/service layers, and reliable authentication patterns in Node.js.',
+          architecturalDecisions: {
+            title: 'Active evaluation: Express vs. Fastify & Prisma vs. TypeORM',
+            details: 'The project deliberately benchmarks two key architectural decisions: at the HTTP server layer, Express\'s battle-tested ecosystem and middleware familiarity against Fastify\'s low overhead, superior throughput, and native JSON schema validation; at the persistence layer, Prisma\'s end-to-end type safety and declarative migrations against TypeORM\'s classic Data Mapper/Active Record enterprise patterns.',
+            tradeoffs: 'Instead of picking libraries out of habit, I am building prototype modules with each combination to measure developer ergonomics under strict TypeScript, cold-start latency, and unit testing simplicity.'
+          },
+          stack: [
+            'TypeScript',
+            'Node.js',
+            'Express or Fastify (evaluation pending)',
+            'Prisma or TypeORM (evaluation pending)',
+            'Zod',
+            'bcryptjs',
+            'JSON Web Tokens (JWT)'
+          ],
+          honestStatusNote: 'Currently in active development on my local machine. Validation schemas, controller structure, and auth flows are being finalized. The GitHub repository will be published once framework and ORM evaluation benchmarks are concluded.',
+          links: {
+            repo: null,
+            demo: null,
+            docs: null,
+            notes: null,
+            hasLiveDemo: false,
+            deployStatusNote: 'In active local development; no production deployment at this stage.'
+          },
+          highlights: [
+            'Runtime schema validation and type inference powered by Zod',
+            'Secure authentication pipeline using salted bcrypt hashes and signed JWTs',
+            'Decoupled multi-tier architecture with clean error normalization'
+          ]
+        },
+        {
+          id: 'radio-studio-booking',
+          order: 3,
+          title: 'Radio Studio Booking System',
+          status: {
+            code: 'planning_modeling',
+            label: 'Planning / Data Modeling Stage',
+            badgeVariant: 'planning'
+          },
+          pitch: 'Scheduling and availability management system for shared recording booths across two radio stations, born from a real manager requirement.',
+          description: 'Originated from an operational problem presented by an actual radio manager: organizing physical recording studio usage shared between two distinct sister radio stations. The scope covers station profiles, acoustic booth registration, sound engineer allocations, booking requests with strict collision checking, dynamic room status tracking, and formal audio technician sign-offs.',
+          stakeholderContext: 'Derived directly from the practical operational requirements of a real radio station manager, rather than an artificial tutorial prompt.',
+          architecturalDecisions: {
+            title: 'Entity-Relationship Modeling (DER) preceding software implementation',
+            details: 'All project efforts thus far have focused on conceptual and logical database modeling (DER). Dedicated relational entities were designed for Station, Studio, Booking, Requesting User, Assigned Technician, and Studio Availability Status (Free, Occupied, Reserved, Maintenance/Cleaning, Unavailable), mathematically formulating overlapping-time conflict prevention.',
+            tradeoffs: 'Investing upfront in rigorous relational modeling prior to coding web routes or UI forms eliminated costly refactoring: technician availability (as a concurrent shared resource) was identified and resolved directly within the schema constraints.'
+          },
+          stack: [
+            'Python (planned)',
+            'Django (planned)',
+            'Relational Data Modeling (DER)',
+            'PostgreSQL or SQLite',
+            'REST API (under evaluation)'
+          ],
+          honestStatusNote: 'Planning and relational data modeling stage completed (DER finalized). No web application code or user interface has been written yet. The project has no running software or deployed application at this stage.',
+          links: {
+            repo: null,
+            demo: null,
+            docs: null,
+            notes: null,
+            hasLiveDemo: false,
+            deployStatusNote: 'Conceptual modeling phase (DER). No executable application or live deploy exists yet.'
+          },
+          highlights: [
+            'Designed around real operational problems communicated by an external radio manager',
+            'Normalized Entity-Relationship Diagram (DER) preventing overlapping booking slots',
+            'State machine modeling room sanitization and sound engineer availability'
+          ]
+        },
+        {
+          id: 'estudos-c',
+          order: 4,
+          title: 'C Programming Exercises (Foundations)',
+          status: {
+            code: 'completed_study_exercise',
+            label: 'Completed as Study Exercise',
+            badgeVariant: 'study'
+          },
+          pitch: 'Curated repository of foundational C exercises exploring algorithmic logic, number handling, control flow, and memory concepts.',
+          description: 'A structured collection of C programs grouped by core computer science topics: loops (while, for, do-while), conditional branching, numeric manipulation and arithmetic, basic pointer mechanics, and terminal-based mini-games. It represents the foundational root of my development journey, proving disciplined mastery of basics before adopting higher-level frameworks.',
+          stakeholderContext: 'Academic foundation building and deliberate practice in introductory computer science coursework.',
+          architecturalDecisions: {
+            title: 'Understanding the low-level memory model and explicit control as a bedrock',
+            details: 'Practicing C established an intuitive understanding of concepts that modern garbage-collected languages abstract away: stack vs. heap allocation, pass-by-value vs. reference, memory layout, and the raw computational complexity of looping constructs.',
+            tradeoffs: 'These exercises carry no commercial or finished-product ambitions, but serve as an indispensable learning milestone that enables reasoning about what compilers and runtimes actually do under the hood.'
+          },
+          stack: [
+            'C',
+            'GCC',
+            'Make',
+            'Linux Terminal'
+          ],
+          honestStatusNote: 'Completed as a study exercise. Deliberately cataloged as foundational algorithmic practice and programming roots, without pretending to be a commercial or production product.',
+          links: {
+            repo: 'https://github.com/iGabrielCampos',
+            demo: null,
+            docs: null,
+            notes: null,
+            hasLiveDemo: false,
+            deployStatusNote: 'Terminal-based exercises executed locally; web deployment is not applicable.'
+          },
+          highlights: [
+            'Rigorous practice with fundamental algorithms and primitive type constraints',
+            'Direct experience with GCC compilation and terminal workflows on Linux',
+            'Solid computing foundation that streamlined the transition to Python and TypeScript'
+          ],
+          isComplementary: true
+        }
+      ]
+    },
+    journal: {
+      sectionTag: 'Continuous Learning',
+      sectionTitle: 'Technical Journal',
+      sectionSubtitle: 'Short, honest write-ups detailing real architectural problems, schema designs, and engineering trade-offs from my projects.',
+      readMoreLabel: 'Read full post',
+      items: [
+        {
+          id: 'post-tvmaze-lean-storage',
+          slug: 'why-cinetrack-stores-only-tvmaze-id',
+          title: 'Why CineTrack stores only the TVmaze ID instead of duplicating show data',
+          date: 'August 15, 2026',
+          readTime: '4 min read',
+          summary: 'An architectural breakdown of the trade-off between local database redundancy in SQLite and on-demand external API consumption.',
+          tags: ['Django', 'Data Modeling', 'REST APIs', 'Architecture'],
+          content: `When I began building CineTrack with Python and Django, my initial instinct was to define local ORM models that mirrored every show property returned by the TVmaze API: show titles, lengthy synopsis text, high-resolution poster URLs, ratings, and episode lists.
+
+However, when modeling the user search history and recently viewed features, I ran into an immediate dilemma: duplicating show metadata locally creates an instant cache invalidation problem. If a series status changes, a premiere date gets updated, or an official synopsis is revised on TVmaze, my local SQLite database would immediately be stale. Furthermore, duplicating large text blobs and images for every searched series would bloat storage without delivering meaningful benefit.
+
+The architectural decision I chose was lean and deliberate: the Django history model (\`UserViewHistory\`) records strictly the authenticated user foreign key (\`user_id\`), the timestamp (\`viewed_at\`), and the external integer show key (\`tvmaze_show_id\`).
+
+Whenever a user reviews their history or clicks to inspect a series, the application uses that integer ID to fetch the show payload directly from \`https://api.tvmaze.com/shows/{id}\` on the TVmaze API.
+
+**The Trade-off:**
+- **Advantages:** The local database remains microscopic, clean, and blazingly fast; no scheduled background synchronization jobs are required to keep metadata fresh; it strictly honors the Single Source of Truth principle.
+- **Disadvantages:** Renders are coupled to TVmaze's uptime and introduce external network latency on detail views.
+
+The natural next evolutionary step to address this latency without sacrificing database simplicity is implementing a lightweight caching layer (via Django's cache framework or Redis) with a short time-to-live (e.g., 24 hours). This provides near-instant response times for frequently visited shows while preserving a lean relational schema.`
+        },
+        {
+          id: 'post-radio-studio-conflict-modeling',
+          slug: 'modeling-conflict-checking-radio-studios',
+          title: 'Modeling conflict-checking and availability for shared radio studios',
+          date: 'September 02, 2026',
+          readTime: '5 min read',
+          summary: 'How real operational pain points from a radio manager shaped an entity-relationship diagram (DER) preventing overlapping bookings.',
+          tags: ['Relational Modeling', 'DER', 'Database Design', 'Business Rules'],
+          content: `Most online scheduling tutorials reduce the reservation domain to a single table containing a start timestamp and an end timestamp. However, when an actual radio manager shared the day-to-day friction his team was experiencing — two sister stations operating in the same facility and competing for the same recording booths — it became evident that the real problem was far more nuanced.
+
+The core challenge involved multiple shared, finite resources simultaneously:
+1. **Physical space:** Two radio teams cannot record inside the same acoustic booth at the same time.
+2. **Specialized personnel:** Studios require dedicated sound technicians to operate the mixing consoles and recording equipment. A technician cannot be assigned to two separate rooms at the same time.
+3. **Turnaround windows:** Studios cannot be occupied immediately after a session concludes; an operational buffer is required for cleaning, ventilating, and recalibrating gear.
+
+Before writing a single line of backend code in Python or Django, I dedicated weeks strictly to producing a normalized Entity-Relationship Diagram (DER).
+
+We designed a finite state machine for studio availability: \`FREE\`, \`RESERVED\`, \`OCCUPIED\`, \`MAINTENANCE_CLEANING\`, and \`UNAVAILABLE\`.
+
+To mathematically validate time overlaps, we formalized the classic non-overlapping interval constraint where a prospective booking \`[new_start, new_end]\` creates a collision if and only if:
+\`\`\`sql
+(new_start < existing_booking.end) AND (new_end > existing_booking.start)
+\`\`\`
+This constraint was mirrored across two non-negotiable vectors:
+- Preventing overlapping intervals for the same \`studio_id\`;
+- Preventing overlapping intervals for the assigned \`technician_id\`.
+
+Investing in comprehensive conceptual modeling prior to writing application code saved weeks of costly refactoring. The schema was born resilient to real-world edge cases, proving that thoughtful database design solves the hardest half of a software problem before the first controller route is ever written.`
+        }
+      ]
+    },
+    learning: {
+      sectionTag: 'Learning Focus',
+      sectionTitle: 'What I Am Currently Studying',
+      sectionSubtitle: 'The technical topics and computer science foundations I deliberately invest time in to grow into a well-rounded engineer.',
+      items: [
+        {
+          id: 'learn-ads',
+          topic: 'Systems Analysis & Development (ADS Degree)',
+          category: 'Academic Education',
+          status: 'In Progress',
+          description: 'Higher education curriculum covering software engineering, business process modeling, data structures, IT governance, and agile methodologies in João Pessoa, PB.',
+          focusAreas: [
+            'Requirements Engineering & Use Case Modeling',
+            'Data Structures & Algorithmic Efficiency',
+            'Software Design Patterns',
+            'Operating Systems & Networking Basics'
+          ]
+        },
+        {
+          id: 'learn-typescript-clean-arch',
+          topic: 'Clean Architecture & RESTful APIs in TypeScript/Node.js',
+          category: 'Backend Engineering',
+          status: 'Active Study',
+          description: 'Hands-on practice with layered architecture (controllers, use cases/services, repositories), dependency inversion, and strict runtime payload validation in TypeScript.',
+          focusAreas: [
+            'Separation of concerns and clean domain boundaries',
+            'Runtime schema validation and type inference with Zod',
+            'Stateless authentication with JWTs and route protection',
+            'Comparative performance benchmarking: Express vs. Fastify'
+          ]
+        },
+        {
+          id: 'learn-database-modeling',
+          topic: 'Relational Database Normalization & Modeling (DER)',
+          category: 'Databases',
+          status: 'Active Study',
+          description: 'Mastery of database normal forms (1NF through 3NF), conceptual and logical Entity-Relationship Diagrams (DER), referential integrity, and index optimization.',
+          focusAreas: [
+            'Relational normalization and anomaly elimination',
+            'Modeling concurrency constraints and time-interval overlaps',
+            'Optimized SQL query patterns and join strategies',
+            'Safe database schema migrations with relational ORMs'
+          ]
+        },
+        {
+          id: 'learn-systems-programming',
+          topic: 'Systems Programming Fundamentals & Algorithmic Logic',
+          category: 'Computer Science',
+          status: 'Consolidated Baseline',
+          description: 'Continuous reinforcement of computing fundamentals established through C, deepening intuition for memory organization, pointers, and computational efficiency.',
+          focusAreas: [
+            'Operational differences between Stack and Heap allocation',
+            'Direct memory mechanics and pointer arithmetic',
+            'Time and space algorithmic complexity analysis',
+            'Unix terminal tooling, GCC compiler flags, and Makefiles'
+          ]
+        }
+      ]
+    },
+    about: {
+      sectionTag: 'My Background',
+      sectionTitle: 'About Me',
+      sectionSubtitle: 'An honest overview of my education, my engineering philosophy, and my career ambitions.',
+      paragraphs: [
+        'I am a Systems Analysis and Development (ADS) student based in João Pessoa, Paraíba, Brazil. My programming journey began with a conscious choice to study C fundamentals first — understanding how memory works, how execution flow impacts performance, and how computers process low-level instructions before leaning on higher-level abstractions.',
+        'With that foundation established, I stepped into the Python and Django ecosystem, building CineTrack — a full-stack web application that combines relational databases, user authentication, server-side template rendering, and a dedicated REST API layer built with Django REST Framework.',
+        'Today, I am focusing my studies on backend software architecture within the TypeScript and Node.js ecosystems, building typed, modular, and reliable APIs while deepening my relational database modeling skills through real-world stakeholder problems, such as the radio studio booking system.',
+        'I strongly believe in learning in public, valuing simplicity as an engineering virtue, and practicing radical transparency. I am actively seeking my first software development internship (remote or on-site in João Pessoa), where I can contribute diligently to production systems, learn from experienced senior engineers, and deliver reliable technical value.'
+      ],
+      quickFactsTitle: 'Quick Facts',
+      quickFacts: [
+        { label: 'Location', value: 'João Pessoa, PB - Brazil (Open to remote roles)' },
+        { label: 'Degree', value: 'Systems Analysis & Development (ADS)' },
+        { label: 'Current Objective', value: 'Software Development Internship' },
+        { label: 'Core Technologies', value: 'Python, Django, DRF, TypeScript, Node.js, C, SQLite/PostgreSQL' },
+        { label: 'Languages', value: 'Portuguese (Native), English (Technical reading and documentation)' }
+      ]
+    },
+    contact: {
+      sectionTag: 'Get in Touch',
+      sectionTitle: 'Contact & Opportunities',
+      sectionSubtitle: 'Actively available for software engineering internship discussions and technical interviews.',
+      opportunityHeadline: 'Seeking a Software Development Internship (Remote or João Pessoa, PB)',
+      message: 'If your engineering team values solid computational fundamentals, disciplined documentation, a commitment to learning in public, practical skill in Python/Django and TypeScript, and radical honesty, I would welcome the opportunity to speak with you.',
+      locationLabel: 'Location',
+      locationValue: 'João Pessoa, Paraíba, Brazil (Available for remote or hybrid/in-person opportunities)',
+      statusLabel: 'Availability',
+      statusValue: 'Immediate availability for internship (Hours compatible with degree schedule)',
+      emailActionLabel: 'Send an Email',
+      viewResumeLabel: 'View Resume (PDF)'
+    }
+  }
+};
+
+// --------------------------------------------------------------------------
+// 2. Strongly Typed Exports Matching types.ts
+// --------------------------------------------------------------------------
+
+export const profileInfo: ProfileInfo = {
+  name: 'Gabriel Campos',
+  headline: {
+    pt: 'Estudante de Análise e Desenvolvimento de Sistemas (ADS) construindo projetos full-stack com Python/Django e TypeScript/Node.js.',
+    en: 'Systems Analysis & Development (ADS) student building full-stack applications with Python/Django and TypeScript/Node.js.'
+  },
+  subheadline: {
+    pt: 'Construindo software com foco em simplicidade, fundamentos de computação e transparência total no processo.',
+    en: 'Building software focused on simplicity, computer science fundamentals, and radical process transparency.'
+  },
+  availability: {
+    pt: 'Disponível para estágio em desenvolvimento de software',
+    en: 'Open for software development internship opportunities'
+  },
+  location: {
+    pt: 'João Pessoa, PB - Brasil (Aberto a posições remotas)',
+    en: 'João Pessoa, PB - Brazil (Open to remote roles)'
+  },
+  email: 'gabriel.a.c.crispim2008@gmail.com',
+  github: 'https://github.com/iGabrielCampos',
+  linkedin: 'https://www.linkedin.com/in/igabrielcampos/',
+  resumePdf: '/assets/curriculo-gabriel-campos.pdf'
+};
+
+export const principles: Principle[] = [
+  {
+    id: 'learn-in-public',
+    title: {
+      pt: 'Aprender em público',
+      en: 'Learn in public'
+    },
+    description: {
+      pt: 'Não escondo projetos inacabados nem finjo que tudo nasce pronto para produção. Compartilhar rascunhos, diagramas conceituais, decisões arquiteturais e tropeços acelera o aprendizado e constrói confiança profissional genuína.',
+      en: 'Incomplete projects are displayed as in-progress rather than hidden away. Sharing drafts, conceptual diagrams, architecture trade-offs, and missteps accelerates genuine learning and builds authentic technical trust.'
+    }
+  },
+  {
+    id: 'avoid-overengineering',
+    title: {
+      pt: 'Evitar superengenharia (Simplicidade primeiro)',
+      en: 'Avoid over-engineering (Simplicity first)'
+    },
+    description: {
+      pt: 'A melhor solução é a mais direta e funcional que resolve a dor real. Evito microsserviços precoces, camadas desnecessárias de abstração e complexidade arquitetural especulativa antes que o domínio realmente exija.',
+      en: 'The best solution is the simplest, direct working code that solves the concrete problem. I avoid premature microservices, needless abstraction layers, and speculative architectural complexity before actual domain constraints require them.'
+    }
+  },
+  {
+    id: 'radical-transparency',
+    title: {
+      pt: 'Transparência radical',
+      en: 'Radical transparency'
+    },
+    description: {
+      pt: 'Sem métricas inventadas, sem números fictícios de usuários e sem links de deploy simulados. Se um projeto está em fase de modelagem ou ainda não foi publicado na nuvem, isso é declarado explicitamente.',
+      en: 'Honest metrics and true project status. No fabricated user numbers, no invented testimonials, and no mocked live deploy links. If a project is in the modeling phase or running locally, that reality is plainly stated.'
+    }
+  },
+  {
+    id: 'disciplined-ai',
+    title: {
+      pt: 'Uso disciplinado de IA com revisão humana',
+      en: 'Disciplined AI tooling with human verification'
+    },
+    description: {
+      pt: 'Utilizo ferramentas de inteligência artificial como aceleradoras de produtividade e pesquisa, mas toda linha de código, restrição de modelo e decisão de arquitetura é compreendida, validada e mantida com critério humano.',
+      en: 'I leverage artificial intelligence tools to accelerate exploratory research and productivity, but every line of code, schema constraint, and design decision is critically reviewed, thoroughly understood, and owned by human judgment.'
+    }
+  }
+];
+
+export const projects: Project[] = [
+  {
+    id: 'cinetrack',
+    title: 'CineTrack',
+    status: 'Functional / Near-Complete',
+    statusPt: 'Funcional / Quase Concluído',
+    statusBadge: {
+      label: {
+        pt: 'Funcional / Quase Concluído',
+        en: 'Functional / Near-Complete'
+      },
+      variant: 'functional'
+    },
+    pitch: {
+      pt: 'Aplicação web completa para pesquisa, catálogo e acompanhamento de séries de TV com integração à API pública do TVmaze.',
+      en: 'Full-stack web application for discovering, tracking, and cataloging TV series using the external TVmaze API.'
+    },
+    description: {
+      pt: 'Desenvolvido com Python e Django, o CineTrack permite a autenticação de usuários, busca de séries via API externa com paginação, visualização detalhada com sinopses, gêneros, elenco e classificações, além de registro de histórico personalizado por conta. O projeto conta com uma camada dedicada de API REST construída com Django REST Framework (DRF), implementando serializadores, viewsets e roteamento para operações CRUD sobre o catálogo monitorado.',
+      en: 'Built with Python and Django, CineTrack provides user authentication, paginated external TVmaze API searches, detailed show pages featuring genres, synopses, cast, and ratings, alongside per-user search and viewing history. The application features a dedicated REST API layer built with Django REST Framework (DRF), complete with serializers, viewsets, and routers for CRUD operations on tracked series.'
+    },
+    architecture: {
+      pt: 'Decisão de Arquitetura: Armazenamento enxuto de histórico via ID externo vs. Duplicação de dados. Em vez de duplicar tabelas pesadas com sinopses, pôsteres e metadados no SQLite local a cada consulta, a modelagem de histórico armazena exclusivamente a relação entre o usuário e o identificador numérico da série no TVmaze (ID externo). Os detalhes completos são requisitados sob demanda à API na visualização. Trade-off: Mantém o banco de dados local ultraleve e imune a dados desatualizados, porém introduz dependência de rede em páginas de detalhes, tornando um cache HTTP leve o próximo passo de evolução.',
+      en: 'Architectural Decision: Lean external ID history storage vs. Local metadata duplication. Rather than duplicating heavy tables containing synopses, posters, and metadata in the local SQLite database for every search, the user history model strictly stores the relationship between the authenticated user and the external numeric TVmaze show ID. Comprehensive show details are re-fetched on demand from the API during page rendering. Trade-off: Keeps the local database extremely lean and immune to stale or out-of-sync show metadata, but introduces an external network call on detail views, making lightweight HTTP caching the natural next optimization.'
+    },
+    stack: [
+      'Python',
+      'Django',
+      'Django REST Framework',
+      'SQLite',
+      'HTML/CSS',
+      'Django Templates',
+      'TVmaze API'
+    ],
+    links: {
+      repo: 'https://github.com/iGabrielCampos/CineTrack',
+      hasLiveDemo: false,
+      noDemoReason: {
+        pt: 'Aplicação funcional em ambiente local. Restam etapas finais de empacotamento: refinamento do README profissional, conferência de dependências no requirements.txt, documentação das rotas da API e configuração do deploy em produção (atualmente sem link ao vivo publicado).',
+        en: 'Functional in local development environment. Pending final packaging and release steps: writing a comprehensive README, freezing dependencies in requirements.txt, generating API endpoint documentation, and configuring live deployment (no public live demo is currently deployed).'
+      }
+    },
+    isFlagship: true
+  },
+  {
+    id: 'api-backend-typescript',
+    title: 'API Backend — TypeScript',
+    status: 'In Development',
+    statusPt: 'Em Desenvolvimento',
+    statusBadge: {
+      label: {
+        pt: 'Em Desenvolvimento',
+        en: 'In Development'
+      },
+      variant: 'inDevelopment'
+    },
+    pitch: {
+      pt: 'API RESTful para autenticação e governança de usuários, desenvolvida como estudo estruturado de arquitetura backend no ecossistema Node.js.',
+      en: 'RESTful API for authentication and user governance, developed as a structured backend architecture exercise in Node.js.'
+    },
+    description: {
+      pt: 'Construída em TypeScript com foco em boas práticas de engenharia de software, a API abrange o ciclo de vida do usuário: cadastro, login com emissão de tokens JWT com expiração configurada, criptografia de senhas com bcryptjs, validação estrita de esquemas na entrada com Zod e tratamento centralizado de exceções com códigos de status HTTP padronizados.',
+      en: 'Engineered in TypeScript with an emphasis on clean architecture and modular separation of concerns. The API covers the full user lifecycle: sign-up, JWT-based login sessions with configurable expiration, secure password hashing using bcryptjs, runtime payload validation via Zod schemas, and centralized error handling with predictable HTTP status responses.'
+    },
+    architecture: {
+      pt: 'Decisão de Arquitetura: Avaliação ativa entre Express vs. Fastify e Prisma vs. TypeORM. O projeto foi desenhado para avaliar comparativamente duas decisões de stack fundamentais: no servidor HTTP, a maturidade consolidada e ecossistema do Express versus a performance superior e validação por esquemas nativa do Fastify; na camada de persistência, a ergonomia tipada ponta a ponta do Prisma versus o padrão clássico Data Mapper/Active Record do TypeORM. Em vez de escolher ferramentas por inércia, estou prototipando módulos nas alternativas para mensurar tempo de inicialização, tipagem estrita de payloads e facilidade na escrita de testes automatizados.',
+      en: 'Architectural Decision: Active evaluation between Express vs. Fastify and Prisma vs. TypeORM. The project deliberately benchmarks two key architectural decisions: at the HTTP server layer, Express\'s battle-tested ecosystem and middleware familiarity against Fastify\'s low overhead, superior throughput, and native JSON schema validation; at the persistence layer, Prisma\'s end-to-end type safety and declarative migrations against TypeORM\'s classic Data Mapper/Active Record enterprise patterns. Instead of picking libraries out of habit, I am building prototype modules with each combination to measure developer ergonomics under strict TypeScript, cold-start latency, and unit testing simplicity.'
+    },
+    stack: [
+      'TypeScript',
+      'Node.js',
+      'Express ou Fastify (em avaliação)',
+      'Prisma ou TypeORM (em avaliação)',
+      'Zod',
+      'bcryptjs',
+      'JSON Web Tokens (JWT)'
+    ],
+    links: {
+      hasLiveDemo: false,
+      noDemoReason: {
+        pt: 'Projeto em desenvolvimento ativo no ambiente local. Módulos de validação e esquemas de autenticação em estruturação. O repositório no GitHub será tornado público assim que os benchmarks das escolhas de framework e ORM forem fechados.',
+        en: 'Currently in active development on my local machine. Validation schemas, controller structure, and auth flows are being finalized. The GitHub repository will be published once framework and ORM evaluation benchmarks are concluded.'
+      }
+    }
+  },
+  {
+    id: 'radio-studio-booking',
+    title: 'Sistema de Reserva de Estúdios de Rádio',
+    status: 'Planning / Data Modeling Stage',
+    statusPt: 'Planejamento / Modelagem de Dados',
+    statusBadge: {
+      label: {
+        pt: 'Planejamento / Modelagem de Dados',
+        en: 'Planning / Data Modeling Stage'
+      },
+      variant: 'planning'
+    },
+    pitch: {
+      pt: 'Sistema para coordenação de reservas e disponibilidade de estúdios compartilhados entre duas emissoras de rádio, originado de uma demanda real.',
+      en: 'Scheduling and availability management system for shared recording booths across two radio stations, born from a real manager requirement.'
+    },
+    description: {
+      pt: 'O projeto nasceu de uma dor operacional concreta trazida por um gestor de rádio: organizar a ocupação de cabines de gravação compartilhadas entre duas emissoras irmãs. O escopo abrange o cadastro de emissoras, estúdios acústicos, produtores e técnicos de som, controle de agendamentos com validação de conflitos de horário, rastreamento de estados operacionais e registro formal da validação técnica de cada sessão.',
+      en: 'Originated from an operational problem presented by an actual radio manager: organizing physical recording studio usage shared between two distinct sister radio stations. The scope covers station profiles, acoustic booth registration, sound engineer allocations, booking requests with strict collision checking, dynamic room status tracking, and formal audio technician sign-offs.'
+    },
+    architecture: {
+      pt: 'Decisão de Arquitetura & Contexto: Modelagem Entidade-Relacionamento (DER) antes de qualquer linha de código. Todo o foco do projeto até o momento foi direcionado à modelagem conceitual e lógica do banco de dados relacional (DER). Foram modeladas entidades distintas para Emissora, Estúdio, Reserva, Usuário Solicitante, Técnico Responsável e Histórico de Ocupação, desenhando a máquina de estados do estúdio (Livre, Ocupado, Reservado, Manutenção/Limpeza, Indisponível) e formulando a consulta relacional de não-sobreposição temporal. A decisão de investir no rigor da modelagem de dados antes de codificar telas ou rotas previne retrabalhos críticos: a concorrência pelo técnico de áudio (além da própria cabine) foi identificada e resolvida diretamente no esquema relacional.',
+      en: 'Architectural Decision & Stakeholder Context: Entity-Relationship Modeling (DER) preceding software implementation. All project efforts thus far have focused on conceptual and logical database modeling (DER). Dedicated relational entities were designed for Station, Studio, Booking, Requesting User, Assigned Technician, and Studio Availability Status (Free, Occupied, Reserved, Maintenance/Cleaning, Unavailable), mathematically formulating overlapping-time conflict prevention. Investing upfront in rigorous relational modeling prior to coding web routes or UI forms eliminated costly refactoring: technician availability (as a concurrent shared resource) was identified and resolved directly within the schema constraints.'
+    },
+    stack: [
+      'Python (planejado)',
+      'Django (planejado)',
+      'Modelagem Relacional (DER)',
+      'PostgreSQL ou SQLite',
+      'REST API (em análise)'
+    ],
+    links: {
+      hasLiveDemo: false,
+      noDemoReason: {
+        pt: 'Etapa de planejamento e modelagem conceitual/lógica concluída (DER finalizado). Nenhuma linha de aplicação web ou interface foi escrita até o momento. O projeto não possui código executável ou versão online nesta fase.',
+        en: 'Planning and relational data modeling stage completed (DER finalized). No web application code or user interface has been written yet. The project has no running software or deployed application at this stage.'
+      }
+    }
+  },
+  {
+    id: 'estudos-c',
+    title: 'Estudos em C (Exercícios Fundamentais)',
+    status: 'Completed as Study Exercise',
+    statusPt: 'Concluído como Exercício de Estudo',
+    statusBadge: {
+      label: {
+        pt: 'Concluído como Exercício de Estudo',
+        en: 'Completed as Study Exercise'
+      },
+      variant: 'study'
+    },
+    pitch: {
+      pt: 'Repositório de exercícios de fixação em linguagem C explorando fundamentos de lógica algorítmica, manipulação de números e controle de fluxo.',
+      en: 'Curated repository of foundational C exercises exploring algorithmic logic, number handling, control flow, and memory concepts.'
+    },
+    description: {
+      pt: 'Conjunto de programas em linguagem C estruturados por temas: estruturas de repetição (while, for, do-while), operadores condicionais, tratamento e aritmética numérica, noções de ponteiros e pequenos jogos interativos via terminal. Funciona como base da minha formação, comprovando a disciplina em dominar os fundamentos antes de abstrações de alto nível.',
+      en: 'A structured collection of C programs grouped by core computer science topics: loops (while, for, do-while), conditional branching, numeric manipulation and arithmetic, basic pointer mechanics, and terminal-based mini-games. It represents the foundational root of my development journey, proving disciplined mastery of basics before adopting higher-level frameworks.'
+    },
+    architecture: {
+      pt: 'Decisão de Arquitetura: Compreensão do modelo de memória e controle explícito como alicerce. A prática em C estabeleceu uma compreensão clara de conceitos que linguagens modernas com garbage collector ocultam: diferença entre pilha (stack) e heap, passagem de parâmetros por valor vs. referência, gerenciamento de buffers e eficiência computacional de laços. Exercícios sem finalidade comercial ou de produto final, mas indispensáveis para formar um engenheiro capaz de raciocinar sobre o que o compilador e o interpretador realmente executam.',
+      en: 'Architectural Decision: Understanding the low-level memory model and explicit control as a bedrock. Practicing C established an intuitive understanding of concepts that modern garbage-collected languages abstract away: stack vs. heap allocation, pass-by-value vs. reference, memory layout, and the raw computational complexity of looping constructs. These exercises carry no commercial or finished-product ambitions, but serve as an indispensable learning milestone that enables reasoning about what compilers and runtimes actually do under the hood.'
+    },
+    stack: [
+      'C',
+      'GCC',
+      'Make',
+      'Linux Terminal'
+    ],
+    links: {
+      repo: 'https://github.com/iGabrielCampos',
+      hasLiveDemo: false,
+      noDemoReason: {
+        pt: 'Exercícios de terminal executados localmente; não se aplica deploy web.',
+        en: 'Terminal-based exercises executed locally; web deployment is not applicable.'
+      }
+    },
+    isComplementary: true
+  }
+];
+
+export const journalPosts: TypesJournalPost[] = [
+  {
+    slug: 'por-que-armazenar-apenas-id-tvmaze-cinetrack',
+    title: {
+      pt: 'Por que armazenar apenas o ID da TVmaze no CineTrack em vez de duplicar dados',
+      en: 'Why CineTrack stores only the TVmaze ID instead of duplicating show data'
+    },
+    date: '2026-08-15',
+    readingTime: '4 min',
+    summary: {
+      pt: 'Uma análise detalhada sobre o trade-off entre redundância local no banco de dados SQLite e consultas sob demanda a uma API externa.',
+      en: 'An architectural breakdown of the trade-off between local database redundancy in SQLite and on-demand external API consumption.'
+    },
+    content: {
+      pt: `Quando iniciei o desenvolvimento do CineTrack com Python e Django, o primeiro impulso natural foi criar tabelas no banco de dados local para armazenar todas as informações que a API do TVmaze fornecia: nome da série, sinopse completa em texto, links de pôsteres em alta resolução, classificação e lista de episódios.
+
+No entanto, ao modelar a funcionalidade de histórico de buscas e séries visualizadas pelo usuário, percebi um problema crítico: a duplicação de dados geraria inconsistências quase imediatas. Se uma série mudasse de status de exibição, ganhasse nova temporada ou tivesse sua sinopse corrigida na base do TVmaze, os dados salvos no meu SQLite local ficariam desatualizados. Além disso, salvar blocos de texto e metadados volumosos para cada série consultada aumentaria desnecessariamente o tamanho do banco.
+
+A decisão arquitetural adotada foi enxuta e direta: a tabela de histórico no Django (\`UserViewHistory\`) armazena estritamente a chave estrangeira do usuário (\`user_id\`), o carimbo de data/hora (\`viewed_at\`) e o identificador numérico da série (\`tvmaze_show_id\`).
+
+Quando o usuário acessa seu histórico ou clica para abrir uma série, a aplicação utiliza esse identificador para consultar o endpoint \`https://api.tvmaze.com/shows/{id}\` diretamente da API pública do TVmaze.
+
+**O Trade-off:**
+- **Vantagens:** O banco local permanece microscópico e ágil; não há necessidade de rotinas periódicas em segundo plano para sincronizar metadados de catálogo; respeito ao princípio de única fonte da verdade (Single Source of Truth).
+- **Desvantagens:** Dependência da estabilidade da API do TVmaze e latência de rede adicional a cada carregamento de página detalhada.
+
+Como próximo passo de evolução para contornar essa desvantagem sem perder a leveza do banco, o plano é implementar uma camada de cache temporário (usando cache em memória do Django ou Redis) com tempo de vida curto (ex: 24 horas), garantindo resposta rápida para séries acessadas repetidamente sem comprometer a integridade do banco relacional.`,
+      en: `When I began building CineTrack with Python and Django, my initial instinct was to define local ORM models that mirrored every show property returned by the TVmaze API: show titles, lengthy synopsis text, high-resolution poster URLs, ratings, and episode lists.
+
+However, when modeling the user search history and recently viewed features, I ran into an immediate dilemma: duplicating show metadata locally creates an instant cache invalidation problem. If a series status changes, a premiere date gets updated, or an official synopsis is revised on TVmaze, my local SQLite database would immediately be stale. Furthermore, duplicating large text blobs and images for every searched series would bloat storage without delivering meaningful benefit.
+
+The architectural decision I chose was lean and deliberate: the Django history model (\`UserViewHistory\`) records strictly the authenticated user foreign key (\`user_id\`), the timestamp (\`viewed_at\`), and the external integer show key (\`tvmaze_show_id\`).
+
+Whenever a user reviews their history or clicks to inspect a series, the application uses that integer ID to fetch the show payload directly from \`https://api.tvmaze.com/shows/{id}\` on the TVmaze API.
+
+**The Trade-off:**
+- **Advantages:** The local database remains microscopic, clean, and blazingly fast; no scheduled background synchronization jobs are required to keep metadata fresh; it strictly honors the Single Source of Truth principle.
+- **Disadvantages:** Renders are coupled to TVmaze's uptime and introduce external network latency on detail views.
+
+The natural next evolutionary step to address this latency without sacrificing database simplicity is implementing a lightweight caching layer (via Django's cache framework or Redis) with a short time-to-live (e.g., 24 hours). This provides near-instant response times for frequently visited shows while preserving a lean relational schema.`
+    },
+    tags: ['Django', 'Data Modeling', 'REST APIs', 'Architecture']
+  },
+  {
+    slug: 'modelagem-conflitos-disponibilidade-estudios-radio',
+    title: {
+      pt: 'Modelagem de conflitos e disponibilidade em estúdios de rádio compartilhados',
+      en: 'Modeling conflict-checking and availability for shared radio studios'
+    },
+    date: '2026-09-02',
+    readingTime: '5 min',
+    summary: {
+      pt: 'Como uma demanda real de um gestor de rádio guiou a construção de um DER capaz de impedir sobreposições de horários e alocação de técnicos.',
+      en: 'How real operational pain points from a radio manager shaped an entity-relationship diagram (DER) preventing overlapping bookings.'
+    },
+    content: {
+      pt: `A maioria dos tutoriais de sistemas de agendamento na internet simplifica o problema a uma tabela com data de início e data de término. No entanto, quando um gestor de rádio me procurou para relatar a dor operacional da sua equipe — duas emissoras irmãs operando no mesmo prédio e dividindo estúdios de gravação —, ficou claro que o problema exigia um rigor relacional muito maior.
+
+O desafio central envolvia múltiplos recursos compartilhados e escassos ao mesmo tempo:
+1. **O espaço físico:** Duas equipes de locução não podem usar a mesma cabine acústica simultaneamente.
+2. **A equipe humana:** Os estúdios necessitam de técnicos de áudio dedicados para operar as mesas e gravações. Um técnico não pode estar em dois estúdios no mesmo intervalo.
+3. **Tempo de transição:** Um estúdio não fica imediatamente liberado após o fim de uma sessão; há uma janela necessária de limpeza e calibração de equipamentos.
+
+Antes de escrever qualquer linha de código em Python ou Django, dediquei semanas exclusivamente ao Diagrama Entidade-Relacionamento (DER).
+
+Estruturamos uma máquina de estados finita para o estúdio: \`LIVRE\`, \`RESERVADO\`, \`OCUPADO\`, \`MANUTENÇÃO_LIMPEZA\` e \`INDISPONÍVEL\`. 
+
+Para a validação matemática de sobreposição de horários, formulamos a restrição relacional em que uma nova reserva \`[novo_inicio, novo_fim]\` entra em conflito se:
+\`\`\`sql
+(novo_inicio < reserva_existente.fim) AND (novo_fim > reserva_existente.inicio)
+\`\`\`
+Essa validação foi espelhada em duas frentes obrigatórias:
+- Não permitir conflito no mesmo \`estudio_id\`;
+- Não permitir conflito para o mesmo \`tecnico_id\`.
+
+Investir tempo no DER antes da codificação evitou refatorações dolorosas. O modelo nasceu preparado para as complexidades operacionais do mundo real, provando que um bom banco de dados resolve metade dos desafios de um software antes mesmo da primeira rota ser compilada.`,
+      en: `Most online scheduling tutorials reduce the reservation domain to a single table containing a start timestamp and an end timestamp. However, when an actual radio manager shared the day-to-day friction his team was experiencing — two sister stations operating in the same facility and competing for the same recording booths — it became evident that the real problem was far more nuanced.
+
+The core challenge involved multiple shared, finite resources simultaneously:
+1. **Physical space:** Two radio teams cannot record inside the same acoustic booth at the same time.
+2. **Specialized personnel:** Studios require dedicated sound technicians to operate the mixing consoles and recording equipment. A technician cannot be assigned to two separate rooms at the same time.
+3. **Turnaround windows:** Studios cannot be occupied immediately after a session concludes; an operational buffer is required for cleaning, ventilating, and recalibrating gear.
+
+Before writing a single line of backend code in Python or Django, I dedicated weeks strictly to producing a normalized Entity-Relationship Diagram (DER).
+
+We designed a finite state machine for studio availability: \`FREE\`, \`RESERVED\`, \`OCCUPIED\`, \`MAINTENANCE_CLEANING\`, and \`UNAVAILABLE\`.
+
+To mathematically validate time overlaps, we formalized the classic non-overlapping interval constraint where a prospective booking \`[new_start, new_end]\` creates a collision if and only if:
+\`\`\`sql
+(new_start < existing_booking.end) AND (new_end > existing_booking.start)
+\`\`\`
+This constraint was mirrored across two non-negotiable vectors:
+- Preventing overlapping intervals for the same \`studio_id\`;
+- Preventing overlapping intervals for the assigned \`technician_id\`.
+
+Investing in comprehensive conceptual modeling prior to writing application code saved weeks of costly refactoring. The schema was born resilient to real-world edge cases, proving that thoughtful database design solves the hardest half of a software problem before the first controller route is ever written.`
+    },
+    tags: ['Relational Modeling', 'DER', 'Database Design', 'Business Rules']
+  }
+];
+
+export const learningTopics: LearningTopic[] = [
+  {
+    id: 'learn-ads',
+    topic: {
+      pt: 'Graduação em Análise e Desenvolvimento de Sistemas (ADS)',
+      en: 'Systems Analysis & Development (ADS Degree)'
+    },
+    category: {
+      pt: 'Formação Acadêmica',
+      en: 'Academic Education'
+    },
+    status: {
+      pt: 'Em curso',
+      en: 'In Progress'
+    },
+    description: {
+      pt: 'Aprofundamento curricular em engenharia de software, modelagem de processos de negócio, estruturas de dados, governança de TI e metodologias ágeis em João Pessoa, PB.',
+      en: 'Higher education curriculum covering software engineering, business process modeling, data structures, IT governance, and agile methodologies in João Pessoa, PB.'
+    },
+    focusAreas: {
+      pt: [
+        'Engenharia de Requisitos e Casos de Uso',
+        'Estruturas de Dados e Algoritmos',
+        'Padrões de Projeto de Software',
+        'Sistemas Operacionais e Redes'
+      ],
+      en: [
+        'Requirements Engineering & Use Case Modeling',
+        'Data Structures & Algorithmic Efficiency',
+        'Software Design Patterns',
+        'Operating Systems & Networking Basics'
+      ]
+    }
+  },
+  {
+    id: 'learn-typescript-clean-arch',
+    topic: {
+      pt: 'Clean Architecture e APIs RESTful em TypeScript/Node.js',
+      en: 'Clean Architecture & RESTful APIs in TypeScript/Node.js'
+    },
+    category: {
+      pt: 'Backend & Engenharia',
+      en: 'Backend Engineering'
+    },
+    status: {
+      pt: 'Estudo Ativo',
+      en: 'Active Study'
+    },
+    description: {
+      pt: 'Estudo prático de desacoplamento em camadas (controllers, use-cases/services, repositories), injeção de dependência e validação robusta em tempo de execução com TypeScript estrito.',
+      en: 'Hands-on practice with layered architecture (controllers, use cases/services, repositories), dependency inversion, and strict runtime payload validation in TypeScript.'
+    },
+    focusAreas: {
+      pt: [
+        'Separação de responsabilidades e camadas de domínio',
+        'Validação com Zod e contratos de tipos estritos',
+        'Autenticação sem estado com JWT e proteção de rotas',
+        'Comparativos de performance entre Express e Fastify'
+      ],
+      en: [
+        'Separation of concerns and clean domain boundaries',
+        'Runtime schema validation and type inference with Zod',
+        'Stateless authentication with JWTs and route protection',
+        'Comparative performance benchmarking: Express vs. Fastify'
+      ]
+    }
+  },
+  {
+    id: 'learn-database-modeling',
+    topic: {
+      pt: 'Normalização e Modelagem de Bancos de Dados Relacionais',
+      en: 'Relational Database Normalization & Modeling (DER)'
+    },
+    category: {
+      pt: 'Banco de Dados',
+      en: 'Databases'
+    },
+    status: {
+      pt: 'Estudo Ativo',
+      en: 'Active Study'
+    },
+    description: {
+      pt: 'Domínio das formas normais (1FN a 3FN), criação de Diagramas Entidade-Relacionamento (DER) conceituais e lógicos, integridade referencial e estratégias de indexação.',
+      en: 'Mastery of database normal forms (1NF through 3NF), conceptual and logical Entity-Relationship Diagrams (DER), referential integrity, and index optimization.'
+    },
+    focusAreas: {
+      pt: [
+        'Normalização e eliminação de anomalias relacionais',
+        'Modelagem de restrições de tempo e recursos concorrentes',
+        'Consultas relacionais otimizadas e junções',
+        'Migrações seguras com ORMs relacionais'
+      ],
+      en: [
+        'Relational normalization and anomaly elimination',
+        'Modeling concurrency constraints and time-interval overlaps',
+        'Optimized SQL query patterns and join strategies',
+        'Safe database schema migrations with relational ORMs'
+      ]
+    }
+  },
+  {
+    id: 'learn-systems-programming',
+    topic: {
+      pt: 'Fundamentos de Programação de Sistemas e Lógica Algorítmica',
+      en: 'Systems Programming Fundamentals & Algorithmic Logic'
+    },
+    category: {
+      pt: 'Ciência da Computação',
+      en: 'Computer Science'
+    },
+    status: {
+      pt: 'Base Consolidada',
+      en: 'Consolidated Baseline'
+    },
+    description: {
+      pt: 'Revisão contínua dos alicerces computacionais trabalhados em C, aprofundando o modelo de memória de computadores, ponteiros e eficiência algorítmica.',
+      en: 'Continuous reinforcement of computing fundamentals established through C, deepening intuition for memory organization, pointers, and computational efficiency.'
+    },
+    focusAreas: {
+      pt: [
+        'Diferenciação operacional entre Stack e Heap',
+        'Manipulação direta de memória e aritmética de ponteiros',
+        'Análise de complexidade de tempo e espaço de laços',
+        'Ferramentas de terminal Unix, GCC e Makefiles'
+      ],
+      en: [
+        'Operational differences between Stack and Heap allocation',
+        'Direct memory mechanics and pointer arithmetic',
+        'Time and space algorithmic complexity analysis',
+        'Unix terminal tooling, GCC compiler flags, and Makefiles'
+      ]
+    }
+  }
+];
+
+export const aboutSection: AboutSection = {
+  title: {
+    pt: 'Sobre Mim',
+    en: 'About Me'
+  },
+  paragraphs: {
+    pt: portfolioContent['pt-BR'].about.paragraphs,
+    en: portfolioContent['en'].about.paragraphs
+  },
+  quickFacts: [
+    {
+      label: { pt: 'Localização', en: 'Location' },
+      value: {
+        pt: 'João Pessoa, PB - Brasil (Aberto a posições remotas)',
+        en: 'João Pessoa, PB - Brazil (Open to remote roles)'
+      }
+    },
+    {
+      label: { pt: 'Curso', en: 'Degree' },
+      value: {
+        pt: 'Análise e Desenvolvimento de Sistemas (ADS)',
+        en: 'Systems Analysis & Development (ADS)'
+      }
+    },
+    {
+      label: { pt: 'Objetivo Atual', en: 'Current Objective' },
+      value: {
+        pt: 'Estágio em Desenvolvimento de Software',
+        en: 'Software Development Internship'
+      }
+    },
+    {
+      label: { pt: 'Principais Tecnologias', en: 'Core Technologies' },
+      value: {
+        pt: 'Python, Django, DRF, TypeScript, Node.js, C, SQLite/PostgreSQL',
+        en: 'Python, Django, DRF, TypeScript, Node.js, C, SQLite/PostgreSQL'
+      }
+    },
+    {
+      label: { pt: 'Idiomas', en: 'Languages' },
+      value: {
+        pt: 'Português (Nativo), Inglês (Leitura e documentação técnica)',
+        en: 'Portuguese (Native), English (Technical reading and documentation)'
+      }
+    }
+  ]
+};
+
+export const getPortfolioContent = (locale: Locale = 'pt-BR'): PortfolioContent => {
+  return portfolioContent[locale] || portfolioContent['pt-BR'];
+};
+
+export default portfolioContent;

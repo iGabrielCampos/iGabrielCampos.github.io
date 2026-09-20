@@ -1,0 +1,96 @@
+# ==============================================================================
+# 1. Governance & Internal Process Files (Internal use only — never make public)
+# ==============================================================================
+# These files define internal AI pairing rules, detailed private specs, and
+# developer planning notes. They must remain private to the local development environment.
+RULES.md
+PROJECT.md
+AGENTS.md
+PRODUCT.md
+DESIGN.md
+prompt*.md
+*prompt*.md
+*PROMPT*.md
+*KICKOFF*.md
+*kickoff*.md
+KICKOFF.md
+
+# AI Tool Harnesses & Local Assistant Directories
+.agent/
+.claude/
+.gemini/
+.opencode/
+
+# ==============================================================================
+# 2. Secrets & Environment Credentials
+# ==============================================================================
+# Prevent accidental leak of API credentials, database URLs, or private tokens.
+.env
+.env.local
+.env.*.local
+*.env
+*secret*
+*credential*
+*.pem
+*.key
+*.cert
+*.crt
+
+# ==============================================================================
+# 3. Build Artifacts & Dependencies
+# ==============================================================================
+# Dependencies are managed via package.json / package-lock.json and installed in CI.
+# Build outputs are generated dynamically by GitHub Actions during deployment.
+node_modules/
+dist/
+build/
+out/
+.astro/
+.next/
+
+# ==============================================================================
+# 4. OS & Editor Noise
+# ==============================================================================
+# Avoid cluttering commits with local operating system or IDE configuration files.
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ==============================================================================
+# 5. Impeccable Tool — Ephemeral & Local Files
+# ==============================================================================
+# Exclude local caches, ephemeral detector hooks, test review captures, and live session subpaths.
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/hook.pending.json
+.impeccable/*.png
+.impeccable/review/
+.impeccable/questions/
+.impeccable/live/*
+
+# Explicitly keep durable Impeccable configuration files if created in future workflows:
+!.impeccable/config.json
+!.impeccable/live/config.json
+!.impeccable/design.json
+!.impeccable/surfaces/*.md
+!.impeccable/critique/*.md
+
+# ==============================================================================
+# 6. Logs & Local Caches
+# ==============================================================================
+# Exclude diagnostic logs, package manager error reports, and local database fixtures.
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.cache/
+*.sqlite3
+*.sqlite
+*.db
