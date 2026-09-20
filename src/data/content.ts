@@ -278,7 +278,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
           ],
           honestStatusNote: 'Aplicação funcional em ambiente local. Pendente apenas de empacotamento final: refinamento do README com instruções de instalação, conferência do requirements.txt, documentação das rotas da API e configuração do deploy inicial (atualmente sem link público ativo).',
           links: {
-            repo: 'https://github.com/iGabrielCampos/CineTrack',
+            repo: 'https://github.com/iGabrielCampos/wsBackendFabricaDeSoftware26.2',
             demo: null,
             docs: null,
             notes: null,
@@ -667,7 +667,7 @@ Investir tempo no DER antes da codificação evitou refatorações dolorosas. O 
           ],
           honestStatusNote: 'Functional in a local development environment. Packaging steps remain: final polish on the project README, dependency pinning check in requirements.txt, REST API endpoint documentation, and live hosting deployment (no live link is currently published).',
           links: {
-            repo: 'https://github.com/iGabrielCampos/CineTrack',
+            repo: 'https://github.com/iGabrielCampos/wsBackendFabricaDeSoftware26.2',
             demo: null,
             docs: null,
             notes: null,
@@ -1065,7 +1065,7 @@ export const projects: Project[] = [
       'TVmaze API'
     ],
     links: {
-      repo: 'https://github.com/iGabrielCampos/CineTrack',
+      repo: 'https://github.com/iGabrielCampos/wsBackendFabricaDeSoftware26.2',
       hasLiveDemo: false,
       noDemoReason: {
         pt: 'Aplicação funcional em ambiente local. Restam etapas finais de empacotamento: refinamento do README profissional, conferência de dependências no requirements.txt, documentação das rotas da API e configuração do deploy em produção (atualmente sem link ao vivo publicado).',
