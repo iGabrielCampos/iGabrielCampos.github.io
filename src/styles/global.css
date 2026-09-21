@@ -110,11 +110,12 @@
   }
 
   /* Bilingual Content Toggle Utilities */
-  :root:not([lang="en"]) .lang-en {
+  :root:not([lang="en"]):not([data-lang="en"]) .lang-en {
     display: none !important;
   }
 
-  :root[lang="en"] .lang-pt {
+  :root[lang="en"] .lang-pt,
+  :root[data-lang="en"] .lang-pt {
     display: none !important;
   }
 }

@@ -73,6 +73,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
               : 'en';
           const lang = storedLang ? storedLang : browserLang;
           document.documentElement.lang = lang;
+          document.documentElement.setAttribute('lang', lang);
           document.documentElement.setAttribute('data-lang', lang);
         } catch (e) {
           console.error(e);
@@ -319,9 +320,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://igabriel
         // Language Toggle Event
         if (langBtn) {
           langBtn.addEventListener('click', () => {
-            const currentLang = document.documentElement.lang || 'pt-BR';
-            const nextLang = currentLang === 'pt-BR' ? 'en' : 'pt-BR';
+            const currentLang = document.documentElement.getAttribute('lang') || document.documentElement.lang || 'pt-BR';
+            const nextLang = currentLang.startsWith('pt') ? 'en' : 'pt-BR';
             document.documentElement.lang = nextLang;
+            document.documentElement.setAttribute('lang', nextLang);
             document.documentElement.setAttribute('data-lang', nextLang);
             localStorage.setItem('portfolio_lang', nextLang);
             updateLangPills(nextLang);
