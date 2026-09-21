@@ -5,37 +5,37 @@ const pt = portfolioContent['pt-BR'].journal;
 const en = portfolioContent['en'].journal;
 ---
 
-<section id="journal" class="py-12 sm:py-16 bg-[#f4f4ee] dark:bg-[#1a1a18] border-b border-[#e5e5dc] dark:border-[#282824]">
+<section id="journal" class="py-12 sm:py-16 bg-slate-100/60 dark:bg-[#1a1a18] border-b border-slate-200/80 dark:border-[#282824]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="space-y-3 mb-8">
       <div class="flex items-center gap-2">
-        <h2 class="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-sky-700 dark:text-amber-400">
           <span class="lang-pt">{pt.sectionTag}</span>
           <span class="lang-en">{en.sectionTag}</span>
         </h2>
       </div>
 
-      <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-stone-900 dark:text-white">
+      <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
         <span class="lang-pt">{pt.sectionTitle}</span>
         <span class="lang-en">{en.sectionTitle}</span>
       </h3>
 
-      <p class="text-sm sm:text-base font-normal text-stone-600 dark:text-stone-400 max-w-prose leading-relaxed">
+      <p class="text-sm sm:text-base font-normal text-slate-600 dark:text-stone-400 max-w-prose leading-relaxed">
         <span class="lang-pt">{pt.sectionSubtitle}</span>
         <span class="lang-en">{en.sectionSubtitle}</span>
       </p>
     </div>
 
-    <div class="mt-8">
+    <div class="mt-8 space-y-6">
       {pt.items.map((ptPost, index) => {
         const enPost = en.items[index] || ptPost;
         return (
           <div
-            class="pt-8 pb-10 border-t border-[#e5e5dc] dark:border-[#282824] first:border-t-0 first:pt-0"
+            class="p-6 sm:p-7 rounded-xl bg-white dark:bg-[#1c1c1a] border border-slate-200/90 dark:border-[#282824] shadow-xs hover:border-slate-300 dark:hover:border-[#3a3a34] transition-colors"
             id={ptPost.slug}
           >
             <!-- Post Header -->
-            <div class="flex flex-wrap items-center justify-between gap-3 mb-3 text-xs text-stone-600 dark:text-stone-400">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-3 text-xs text-slate-500 dark:text-stone-400">
               <div class="flex items-center gap-3 font-mono">
                 <time datetime={ptPost.date}>{ptPost.date}</time>
                 <span>•</span>
@@ -43,32 +43,31 @@ const en = portfolioContent['en'].journal;
                 <span class="lang-en">{enPost.readTime}</span>
               </div>
 
-              <!-- Tags (Clean typographic layout, no nested card boxes) -->
-              <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-stone-600 dark:text-stone-400">
-                {ptPost.tags.map((tag, idx) => (
-                  <span class="inline-flex items-center gap-1.5">
-                    {idx > 0 && <span class="text-stone-300 dark:text-stone-700 select-none">•</span>}
-                    <span>{tag}</span>
+              <!-- Tags -->
+              <div class="flex flex-wrap items-center gap-1.5 font-mono text-xs">
+                {ptPost.tags.map((tag) => (
+                  <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-[#161614] text-slate-700 dark:text-stone-300 border border-slate-200/80 dark:border-[#282824]">
+                    {tag}
                   </span>
                 ))}
               </div>
             </div>
 
             <!-- Post Title -->
-            <h4 class="text-lg sm:text-xl font-semibold text-stone-900 dark:text-white mb-2">
+            <h4 class="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white mb-2">
               <span class="lang-pt">{ptPost.title}</span>
               <span class="lang-en">{enPost.title}</span>
             </h4>
 
             <!-- Summary -->
-            <p class="text-sm font-normal text-stone-600 dark:text-stone-400 mb-4 leading-relaxed max-w-prose">
+            <p class="text-sm font-normal text-slate-600 dark:text-stone-400 mb-4 leading-relaxed max-w-prose">
               <span class="lang-pt">{ptPost.summary}</span>
               <span class="lang-en">{enPost.summary}</span>
             </p>
 
             <!-- Expandable Full Article Body -->
-            <details class="group pt-2 border-t border-stone-100 dark:border-[#282824]">
-              <summary class="cursor-pointer font-mono text-xs font-semibold text-amber-800 dark:text-amber-400 hover:text-amber-900 dark:hover:text-amber-300 inline-flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500 rounded py-1">
+            <details class="group pt-3 border-t border-slate-100 dark:border-[#282824]">
+              <summary class="cursor-pointer font-mono text-xs font-semibold text-sky-700 dark:text-amber-400 hover:text-sky-800 dark:hover:text-amber-300 inline-flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500 rounded py-1">
                 <span class="group-open:hidden">
                   <span class="lang-pt">↓ {pt.readMoreLabel}</span>
                   <span class="lang-en">↓ {en.readMoreLabel}</span>
@@ -79,7 +78,7 @@ const en = portfolioContent['en'].journal;
                 </span>
               </summary>
 
-              <div class="mt-4 pt-4 border-t border-stone-100 dark:border-[#282824] prose prose-stone dark:prose-invert max-w-prose text-xs sm:text-sm leading-relaxed whitespace-pre-line text-stone-700 dark:text-stone-300">
+              <div class="mt-4 pt-4 border-t border-slate-100 dark:border-[#282824] prose prose-slate dark:prose-invert max-w-prose text-xs sm:text-sm leading-relaxed whitespace-pre-line text-slate-700 dark:text-stone-300">
                 <div class="lang-pt">{ptPost.content}</div>
                 <div class="lang-en">{enPost.content}</div>
               </div>

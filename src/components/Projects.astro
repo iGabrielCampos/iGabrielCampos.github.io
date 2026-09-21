@@ -10,45 +10,45 @@ const ptSorted = [...pt.items].sort((a, b) => a.order - b.order);
 const enSorted = [...en.items].sort((a, b) => a.order - b.order);
 ---
 
-<section id="projects" class="py-12 sm:py-16 bg-[#fbfbfa] dark:bg-[#141413] border-b border-[#e5e5dc] dark:border-[#2c2c28]">
+<section id="projects" class="py-12 sm:py-16 bg-slate-50 dark:bg-[#141413] border-b border-slate-200/80 dark:border-[#2c2c28]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Heading -->
     <div class="space-y-3 mb-8">
       <div class="flex items-center gap-2">
-        <h2 class="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-sky-700 dark:text-amber-400">
           <span class="lang-pt">{pt.sectionTag}</span>
           <span class="lang-en">{en.sectionTag}</span>
         </h2>
       </div>
 
-      <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-stone-900 dark:text-white">
+      <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
         <span class="lang-pt">{pt.sectionTitle}</span>
         <span class="lang-en">{en.sectionTitle}</span>
       </h3>
 
-      <p class="text-sm sm:text-base font-normal text-stone-600 dark:text-stone-400 max-w-prose leading-relaxed">
+      <p class="text-sm sm:text-base font-normal text-slate-600 dark:text-stone-400 max-w-prose leading-relaxed">
         <span class="lang-pt">{pt.sectionSubtitle}</span>
         <span class="lang-en">{en.sectionSubtitle}</span>
       </p>
 
-      <!-- Honesty Banner / Compromisso de Transparência (Flattened left-accent) -->
-      <div class="mt-4 pl-4 py-1.5 border-l-2 border-amber-600 dark:border-amber-500 text-xs text-stone-700 dark:text-stone-300 flex items-start gap-2.5 max-w-prose">
-        <svg class="w-4 h-4 text-amber-700 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <!-- Honesty Banner / Compromisso de Transparência -->
+      <div class="mt-4 p-4 rounded-xl bg-sky-50/70 dark:bg-transparent border border-sky-200 dark:border-l-2 dark:border-amber-500 dark:border-t-0 dark:border-r-0 dark:border-b-0 text-xs text-slate-700 dark:text-stone-300 flex items-start gap-3 max-w-prose shadow-xs">
+        <svg class="w-4 h-4 text-sky-700 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
         </svg>
         <div>
-          <span class="font-mono font-semibold block mb-0.5 text-stone-900 dark:text-white">
+          <span class="font-mono font-semibold block mb-0.5 text-slate-900 dark:text-white">
             <span class="lang-pt">{pt.honestyBanner.title}</span>
             <span class="lang-en">{en.honestyBanner.title}</span>
           </span>
-          <span class="lang-pt leading-relaxed text-stone-600 dark:text-stone-400">{pt.honestyBanner.message}</span>
-          <span class="lang-en leading-relaxed text-stone-600 dark:text-stone-400">{en.honestyBanner.message}</span>
+          <span class="lang-pt leading-relaxed text-slate-600 dark:text-stone-400">{pt.honestyBanner.message}</span>
+          <span class="lang-en leading-relaxed text-slate-600 dark:text-stone-400">{en.honestyBanner.message}</span>
         </div>
       </div>
     </div>
 
     <!-- Projects List (Strict Order) -->
-    <div class="mt-8">
+    <div class="mt-8 space-y-6">
       {ptSorted.map((ptProject, index) => {
         const enProject = enSorted[index] || ptProject;
         return <ProjectCard ptProject={ptProject} enProject={enProject} />;

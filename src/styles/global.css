@@ -11,17 +11,17 @@
 
 @layer base {
   :root {
-    --color-bg: #fbfbfa;
+    --color-bg: #f8fafc;
     --color-surface: #ffffff;
-    --color-surface-subtle: #f4f4ee;
-    --color-text-primary: #1c1917;
-    --color-text-secondary: #78716c;
-    --color-text-muted: #a8a29e;
-    --color-border: #e5e5dc;
-    --color-border-subtle: #d6d6cb;
-    --color-accent: #c2410c;
-    --color-accent-hover: #9a3412;
-    --focus-ring: #c2410c;
+    --color-surface-subtle: #f1f5f9;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #334155;
+    --color-text-muted: #64748b;
+    --color-border: #e2e8f0;
+    --color-border-subtle: #cbd5e1;
+    --color-accent: #0284c7;
+    --color-accent-hover: #0369a1;
+    --focus-ring: #0284c7;
   }
 
   .dark {

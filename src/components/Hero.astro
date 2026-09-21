@@ -5,12 +5,12 @@ const pt = portfolioContent['pt-BR'];
 const en = portfolioContent['en'];
 ---
 
-<section id="hero" class="py-12 sm:py-20 bg-[#fbfbfa] dark:bg-[#141413] border-b border-[#e5e5dc] dark:border-[#2c2c28]">
+<section id="hero" class="py-12 sm:py-20 bg-slate-50 dark:bg-[#141413] border-b border-slate-200/80 dark:border-[#2c2c28]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-    <!-- Internship Availability Badge (De-slopped, quiet & refined) -->
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 dark:bg-[#1c1c1a] border border-stone-200/80 dark:border-[#2c2c28] text-stone-700 dark:text-stone-300 text-xs font-mono font-medium shadow-xs">
+    <!-- Internship Availability Badge -->
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-[#1c1c1a] border border-slate-200 dark:border-[#2c2c28] text-slate-700 dark:text-stone-300 text-xs font-mono font-medium shadow-xs">
       <svg class="w-1.5 h-1.5 flex-shrink-0" viewBox="0 0 6 6" aria-hidden="true">
-        <circle cx="3" cy="3" r="2.5" class="fill-emerald-600 dark:fill-emerald-400" />
+        <circle cx="3" cy="3" r="2.5" class="fill-emerald-500 dark:fill-emerald-400" />
       </svg>
       <span class="lang-pt">{pt.hero.statusBadge}</span>
       <span class="lang-en">{en.hero.statusBadge}</span>
@@ -18,18 +18,18 @@ const en = portfolioContent['en'];
 
     <!-- Name and Terminal Motif -->
     <div>
-      <p class="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 mb-2">
+      <p class="text-xs font-mono uppercase tracking-widest text-sky-700 dark:text-amber-400 mb-2">
         <span class="lang-pt">{pt.hero.greeting}</span>
         <span class="lang-en">{en.hero.greeting}</span>
       </p>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-stone-900 dark:text-white">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 dark:text-white">
         {pt.meta.name}
       </h1>
     </div>
 
     <!-- Main Headline -->
     <div class="max-w-prose">
-      <p class="text-lg sm:text-xl font-normal text-stone-800 dark:text-stone-200 leading-snug">
+      <p class="text-lg sm:text-xl font-normal text-slate-700 dark:text-stone-200 leading-snug">
         <span class="lang-pt">{pt.hero.headline}</span>
         <span class="lang-en">{en.hero.headline}</span>
       </p>
@@ -39,7 +39,7 @@ const en = portfolioContent['en'];
     <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
       <a
         href={pt.hero.ctaPrimary.href}
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-stone-900 text-white dark:bg-amber-500 dark:text-amber-950 font-semibold text-sm hover:bg-stone-800 dark:hover:bg-amber-400 shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-sky-600 text-white hover:bg-sky-700 dark:bg-amber-500 dark:text-amber-950 dark:hover:bg-amber-400 font-semibold text-sm shadow-xs transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500"
       >
         <span class="lang-pt">{pt.hero.ctaPrimary.label}</span>
         <span class="lang-en">{en.hero.ctaPrimary.label}</span>
@@ -53,10 +53,10 @@ const en = portfolioContent['en'];
         href={pt.meta.resumeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="lang-pt inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-300 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-stone-800 dark:text-stone-200 font-semibold text-sm hover:bg-stone-100 dark:hover:bg-[#252522] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm"
+        class="lang-pt inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-slate-800 dark:text-stone-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-[#252522] hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500 shadow-xs"
         aria-label="Currículo (PDF)"
       >
-        <svg class="w-4 h-4 text-amber-700 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg class="w-4 h-4 text-sky-600 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
         <span>Currículo (PDF)</span>
@@ -67,10 +67,10 @@ const en = portfolioContent['en'];
         href={en.meta.resumeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="lang-en inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-300 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-stone-800 dark:text-stone-200 font-semibold text-sm hover:bg-stone-100 dark:hover:bg-[#252522] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm"
+        class="lang-en inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-slate-800 dark:text-stone-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-[#252522] hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500 shadow-xs"
         aria-label="Resume (PDF)"
       >
-        <svg class="w-4 h-4 text-amber-700 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg class="w-4 h-4 text-sky-600 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
         <span>Resume (PDF)</span>
@@ -78,20 +78,20 @@ const en = portfolioContent['en'];
 
       <a
         href={pt.hero.ctaSecondary.href}
-        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-transparent text-stone-600 dark:text-stone-400 font-semibold text-sm hover:text-stone-900 dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
+        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-transparent text-slate-600 dark:text-stone-400 font-semibold text-sm hover:text-slate-900 dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500"
       >
         <span class="lang-pt">{pt.hero.ctaSecondary.label}</span>
         <span class="lang-en">{en.hero.ctaSecondary.label}</span>
       </a>
 
       <!-- Quick Social / Direct Icons -->
-      <div class="flex items-center gap-2 pl-2 sm:border-l sm:border-stone-300 sm:dark:border-[#2c2c28]">
+      <div class="flex items-center gap-2 pl-2 sm:border-l sm:border-slate-200 sm:dark:border-[#2c2c28]">
         <!-- GitHub -->
         <a
           href={pt.meta.github}
           target="_blank"
           rel="noopener noreferrer"
-          class="p-2 rounded-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-[#1c1c1a] transition-colors"
+          class="p-2 rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors"
           aria-label="GitHub Profile"
           title="GitHub"
         >
@@ -105,7 +105,7 @@ const en = portfolioContent['en'];
           href={pt.meta.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          class="p-2 rounded-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-[#1c1c1a] transition-colors"
+          class="p-2 rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors"
           aria-label="LinkedIn Profile"
           title="LinkedIn"
         >
@@ -117,7 +117,7 @@ const en = portfolioContent['en'];
         <!-- Direct Email -->
         <a
           href={`mailto:${pt.meta.email}`}
-          class="p-2 rounded-lg text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-[#1c1c1a] transition-colors"
+          class="p-2 rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors"
           aria-label="Send Email"
           title={pt.meta.email}
         >

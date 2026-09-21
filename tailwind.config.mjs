@@ -7,13 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta 3: Editorial Ink & Terracotta
         surface: {
-          light: '#fbfbfa',
+          light: '#f8fafc',
           DEFAULT: '#1c1c1a',
           dark: '#141413',
           subtle: {
-            light: '#f4f4ee',
+            light: '#f1f5f9',
             dark: '#1a1a18',
           },
           card: {
@@ -21,12 +20,12 @@ export default {
             dark: '#1c1c1a',
           },
           border: {
-            light: '#e5e5dc',
+            light: '#e2e8f0',
             dark: '#2c2c28',
           },
         },
         accent: {
-          light: '#c2410c', // Terracota queimado
+          light: '#0284c7', // Sky blue vibrante no modo claro
           DEFAULT: '#fb923c', // Ocre/tangerina técnica
           dark: '#fb923c',
         },

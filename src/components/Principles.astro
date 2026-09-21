@@ -5,38 +5,38 @@ const pt = portfolioContent['pt-BR'].principles;
 const en = portfolioContent['en'].principles;
 ---
 
-<section id="principles" class="py-12 sm:py-16 bg-[#f4f4ee] dark:bg-[#1a1a18] border-b border-[#e5e5dc] dark:border-[#282824]">
+<section id="principles" class="py-12 sm:py-16 bg-slate-100/60 dark:bg-[#1a1a18] border-b border-slate-200/80 dark:border-[#282824]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="space-y-3 mb-8">
       <div class="flex items-center gap-2">
-        <h2 class="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-sky-700 dark:text-amber-400">
           <span class="lang-pt">{pt.sectionTag}</span>
           <span class="lang-en">{en.sectionTag}</span>
         </h2>
       </div>
 
-      <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-stone-900 dark:text-white">
+      <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
         <span class="lang-pt">{pt.sectionTitle}</span>
         <span class="lang-en">{en.sectionTitle}</span>
       </h3>
 
-      <p class="text-sm sm:text-base font-normal text-stone-600 dark:text-stone-400 max-w-prose leading-relaxed">
+      <p class="text-sm sm:text-base font-normal text-slate-600 dark:text-stone-400 max-w-prose leading-relaxed">
         <span class="lang-pt">{pt.sectionSubtitle}</span>
         <span class="lang-en">{en.sectionSubtitle}</span>
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8 pt-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-2">
       {pt.items.map((item, index) => {
         const enItem = en.items[index] || item;
         return (
-          <div class="space-y-2 border-t border-[#e5e5dc] dark:border-[#282824] pt-4">
-            <h4 class="text-base sm:text-lg font-semibold text-stone-900 dark:text-white">
+          <div class="p-5 sm:p-6 rounded-xl bg-white dark:bg-[#1c1c1a] border border-slate-200/80 dark:border-[#282824] shadow-xs space-y-2 hover:border-slate-300 dark:hover:border-[#3a3a34] transition-colors">
+            <h4 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white">
               <span class="lang-pt">{item.title}</span>
               <span class="lang-en">{enItem.title}</span>
             </h4>
 
-            <p class="text-sm font-normal text-stone-600 dark:text-stone-400 leading-relaxed max-w-prose">
+            <p class="text-sm font-normal text-slate-600 dark:text-stone-400 leading-relaxed max-w-prose">
               <span class="lang-pt">{item.description}</span>
               <span class="lang-en">{enItem.description}</span>
             </p>
