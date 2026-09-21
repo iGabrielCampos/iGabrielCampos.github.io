@@ -48,19 +48,32 @@ const en = portfolioContent['en'];
         </svg>
       </a>
 
-      <!-- Resume PDF Button (High-value Recruiter Action) -->
+      <!-- Resume PDF Button - PT (shows when language is Portuguese) -->
       <a
         href={pt.meta.resumeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-300 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-stone-800 dark:text-stone-200 font-semibold text-sm hover:bg-stone-100 dark:hover:bg-[#252522] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm"
-        aria-label="Curriculum Vitae / Resume (PDF)"
+        class="lang-pt inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-300 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-stone-800 dark:text-stone-200 font-semibold text-sm hover:bg-stone-100 dark:hover:bg-[#252522] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm"
+        aria-label="Currículo (PDF)"
       >
         <svg class="w-4 h-4 text-amber-700 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
-        <span class="lang-pt">Currículo (PDF)</span>
-        <span class="lang-en">Resume (PDF)</span>
+        <span>Currículo (PDF)</span>
+      </a>
+
+      <!-- Resume PDF Button - EN (shows when language is English) -->
+      <a
+        href={en.meta.resumeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="lang-en inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-stone-300 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-stone-800 dark:text-stone-200 font-semibold text-sm hover:bg-stone-100 dark:hover:bg-[#252522] transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-sm"
+        aria-label="Resume (PDF)"
+      >
+        <svg class="w-4 h-4 text-amber-700 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        <span>Resume (PDF)</span>
       </a>
 
       <a
