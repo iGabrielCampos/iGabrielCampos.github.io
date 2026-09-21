@@ -10,17 +10,10 @@ const metaEn = portfolioContent['en'].meta;
 <section id="contact" class="py-12 sm:py-20 bg-slate-50 dark:bg-[#141413]">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="space-y-3 mb-8">
-      <div class="flex items-center gap-2">
-        <h2 class="text-xs font-mono uppercase tracking-widest text-sky-700 dark:text-amber-400">
-          <span class="lang-pt">{pt.sectionTag}</span>
-          <span class="lang-en">{en.sectionTag}</span>
-        </h2>
-      </div>
-
-      <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
         <span class="lang-pt">{pt.sectionTitle}</span>
         <span class="lang-en">{en.sectionTitle}</span>
-      </h3>
+      </h2>
 
       <p class="text-sm sm:text-base font-normal text-slate-600 dark:text-stone-400 max-w-prose leading-relaxed">
         <span class="lang-pt">{pt.sectionSubtitle}</span>
@@ -30,7 +23,7 @@ const metaEn = portfolioContent['en'].meta;
 
     <div class="p-6 sm:p-8 rounded-xl bg-white dark:bg-[#1c1c1a] border border-slate-200/90 dark:border-[#2c2c28] shadow-xs space-y-6">
       <!-- Opportunity Headline Callout -->
-      <div class="p-4 rounded-lg bg-sky-50/70 dark:bg-transparent border border-sky-200/80 dark:border-l-2 dark:border-amber-400 dark:border-t-0 dark:border-r-0 dark:border-b-0 max-w-prose">
+      <div class="p-4 rounded-lg bg-sky-50/70 dark:bg-[#181816] border border-sky-200/80 dark:border-[#282824] max-w-prose">
         <div class="flex items-center gap-2 text-sky-800 dark:text-amber-400 font-mono text-xs font-semibold uppercase tracking-wider mb-1">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-500"></span>
           <span class="lang-pt">Foco Principal</span>
@@ -78,13 +71,13 @@ const metaEn = portfolioContent['en'].meta;
         <!-- Direct Mailto CTA -->
         <a
           href={`mailto:${metaPt.email}`}
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-700 dark:bg-amber-500 dark:text-amber-950 dark:hover:bg-amber-400 text-white font-semibold text-sm shadow-xs transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500"
+          class="inline-flex items-center gap-2 px-5 py-2.5 min-h-[44px] rounded-lg bg-sky-700 hover:bg-sky-800 dark:bg-amber-500 dark:text-amber-950 dark:hover:bg-amber-400 text-white font-semibold text-sm shadow-xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:focus-visible:ring-amber-500"
         >
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
           </svg>
-          <span class="lang-pt">{pt.emailActionLabel} ({metaPt.email})</span>
-          <span class="lang-en">{en.emailActionLabel} ({metaPt.email})</span>
+          <span class="lang-pt">{pt.emailActionLabel}</span>
+          <span class="lang-en">{en.emailActionLabel}</span>
         </a>
 
         <!-- View Resume PDF - PT (shows when language is Portuguese) -->

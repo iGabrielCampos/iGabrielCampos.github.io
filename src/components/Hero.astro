@@ -39,7 +39,7 @@ const en = portfolioContent['en'];
     <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
       <a
         href={pt.hero.ctaPrimary.href}
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-sky-600 text-white hover:bg-sky-700 dark:bg-amber-500 dark:text-amber-950 dark:hover:bg-amber-400 font-semibold text-sm shadow-xs transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500"
+        class="inline-flex items-center gap-2 px-5 py-2.5 min-h-[44px] rounded-lg bg-sky-700 text-white hover:bg-sky-800 dark:bg-amber-500 dark:text-amber-950 dark:hover:bg-amber-400 font-semibold text-sm shadow-xs transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:focus-visible:ring-amber-500"
       >
         <span class="lang-pt">{pt.hero.ctaPrimary.label}</span>
         <span class="lang-en">{en.hero.ctaPrimary.label}</span>
@@ -53,10 +53,10 @@ const en = portfolioContent['en'];
         href={pt.meta.resumeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="lang-pt inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-slate-800 dark:text-stone-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-[#252522] hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500 shadow-xs"
+        class="lang-pt inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg border border-slate-200 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-slate-800 dark:text-stone-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-[#252522] hover:border-slate-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:focus-visible:ring-amber-500 shadow-xs"
         aria-label="Currículo (PDF)"
       >
-        <svg class="w-4 h-4 text-sky-600 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg class="w-4 h-4 text-sky-700 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
         <span>Currículo (PDF)</span>
@@ -67,32 +67,24 @@ const en = portfolioContent['en'];
         href={en.meta.resumeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="lang-en inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-200 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-slate-800 dark:text-stone-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-[#252522] hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500 shadow-xs"
+        class="lang-en inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-lg border border-slate-200 dark:border-[#2c2c28] bg-white dark:bg-[#1c1c1a] text-slate-800 dark:text-stone-200 font-semibold text-sm hover:bg-slate-100 dark:hover:bg-[#252522] hover:border-slate-300 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:focus-visible:ring-amber-500 shadow-xs"
         aria-label="Resume (PDF)"
       >
-        <svg class="w-4 h-4 text-sky-600 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg class="w-4 h-4 text-sky-700 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
         </svg>
         <span>Resume (PDF)</span>
       </a>
 
-      <a
-        href={pt.hero.ctaSecondary.href}
-        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-transparent text-slate-600 dark:text-stone-400 font-semibold text-sm hover:text-slate-900 dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 dark:focus:ring-amber-500"
-      >
-        <span class="lang-pt">{pt.hero.ctaSecondary.label}</span>
-        <span class="lang-en">{en.hero.ctaSecondary.label}</span>
-      </a>
-
       <!-- Quick Social / Direct Icons -->
-      <div class="flex items-center gap-2 pl-2 sm:border-l sm:border-slate-200 sm:dark:border-[#2c2c28]">
+      <div class="flex items-center gap-1.5 pl-2 sm:border-l sm:border-slate-200 sm:dark:border-[#2c2c28]">
         <!-- GitHub -->
         <a
           href={pt.meta.github}
           target="_blank"
           rel="noopener noreferrer"
-          class="p-2 rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors"
-          aria-label="GitHub Profile"
+          class="w-11 h-11 inline-flex items-center justify-center rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:focus-visible:ring-amber-500"
+          aria-label="GitHub Profile (abre em nova aba)"
           title="GitHub"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -105,8 +97,8 @@ const en = portfolioContent['en'];
           href={pt.meta.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          class="p-2 rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors"
-          aria-label="LinkedIn Profile"
+          class="w-11 h-11 inline-flex items-center justify-center rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:focus-visible:ring-amber-500"
+          aria-label="LinkedIn Profile (abre em nova aba)"
           title="LinkedIn"
         >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -117,8 +109,8 @@ const en = portfolioContent['en'];
         <!-- Direct Email -->
         <a
           href={`mailto:${pt.meta.email}`}
-          class="p-2 rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors"
-          aria-label="Send Email"
+          class="w-11 h-11 inline-flex items-center justify-center rounded-lg text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-[#1c1c1a] border border-transparent hover:border-slate-200 dark:hover:border-transparent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:focus-visible:ring-amber-500"
+          aria-label="Enviar Email"
           title={pt.meta.email}
         >
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">

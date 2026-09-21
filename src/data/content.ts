@@ -184,7 +184,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       email: 'gabriel.a.c.crispim2008@gmail.com',
       github: 'https://github.com/iGabrielCampos',
       linkedin: 'https://www.linkedin.com/in/igabrielcampos/',
-      resumeUrl: encodeURI('/assets/Currículo Gabriel Crispim_ptbr.pdf'),
+      resumeUrl: '/assets/curriculo-gabriel-crispim-ptbr.pdf',
       availabilityStatus: 'Disponível para estágio em desenvolvimento de software'
     },
     navigation: {

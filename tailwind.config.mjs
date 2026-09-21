@@ -113,7 +113,7 @@ export default {
         ],
       },
       maxWidth: {
-        prose: '50ch',
+        prose: '68ch',
       },
     },
   },
