@@ -183,7 +183,7 @@ export const portfolioContent: Record<Locale, PortfolioContent> = {
       location: 'João Pessoa, PB - Brasil',
       email: 'gabriel.a.c.crispim2008@gmail.com',
       github: 'https://github.com/iGabrielCampos',
-      linkedin: 'https://www.linkedin.com/in/gabriel-campos-2604b2411/',
+      linkedin: 'https://www.linkedin.com/in/igabrielcampos/',
       resumeUrl: '/assets/curriculo-gabriel-crispim-ptbr.pdf',
       availabilityStatus: 'Disponível para estágio em desenvolvimento de software'
     },
@@ -573,7 +573,7 @@ Investir tempo no DER antes da codificação evitou refatorações dolorosas. O 
       location: 'João Pessoa, PB - Brazil',
       email: 'gabriel.a.c.crispim2008@gmail.com',
       github: 'https://github.com/iGabrielCampos',
-      linkedin: 'https://www.linkedin.com/in/gabriel-campos-2604b2411/',
+      linkedin: 'https://www.linkedin.com/in/igabrielcampos/',
       resumeUrl: '/assets/curriculo-gabriel-campos.pdf',
       availabilityStatus: 'Open for software development internship opportunities'
     },
@@ -982,7 +982,7 @@ export const profileInfo: ProfileInfo = {
   },
   email: 'gabriel.a.c.crispim2008@gmail.com',
   github: 'https://github.com/iGabrielCampos',
-  linkedin: 'https://www.linkedin.com/in/gabriel-campos-2604b2411/',
+  linkedin: 'https://www.linkedin.com/in/igabrielcampos/',
   resumePdf: '/assets/curriculo-gabriel-campos.pdf'
 };
 
